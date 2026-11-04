@@ -28,90 +28,88 @@
   :focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 4px; }
   .on-cream :focus-visible { outline-color: var(--ink); }
 
-  .btn {
-    display: inline-block; text-decoration: none; font: 600 18px/1 "Bricolage Grotesque", sans-serif; cursor: pointer;
-    padding: 16px 26px; border-radius: 10px; border: 2px solid var(--sun); background: var(--sun); color: var(--ink);
-    transition: background-color .15s ease, color .15s ease;
-  }
+  .btn { display: inline-block; text-decoration: none; font: 600 18px/1 "Bricolage Grotesque", sans-serif; cursor: pointer; padding: 16px 26px; border-radius: 10px; border: 2px solid var(--sun); background: var(--sun); color: var(--ink); transition: background-color .15s ease, color .15s ease; }
   .btn:hover { background: transparent; color: var(--sun); }
   .btn-line { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
   .btn-line:hover { border-color: #fff; background: rgba(255,255,255,.12); color: #fff; }
   .btn-sea { background: var(--sea); border-color: var(--sea); color: #fff; }
   .btn-sea:hover { background: transparent; color: var(--sea); }
 
-  /* Hero: il porto di Marettimo all'ora blu, le finestre accese */
-  .hero {
-    position: relative; min-height: 100svh; display: flex; flex-direction: column; overflow: hidden;
-    background: #0B2744 url("../../assets/photos/porto-sera.jpg") 30% 40% / cover no-repeat;
-  }
-  .hero::before {
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(11,39,68,.55) 0%, rgba(11,39,68,0) 28%, rgba(11,39,68,.35) 55%, rgba(11,39,68,.96) 100%);
-  }
-  .top { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 20px var(--gutter); }
+  /* Barra in alto, sopra la foto */
+  .top { position: absolute; z-index: 6; left: 0; right: 0; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 20px var(--gutter); }
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; font-size: 22px; }
   .brand img { width: 42px; height: 42px; }
   .top nav { display: flex; gap: clamp(16px, 3vw, 34px); align-items: center; font-weight: 600; font-size: 17px; }
   .top nav a { text-decoration: none; text-shadow: 0 1px 12px rgba(0,0,0,.45); }
   .top nav a:hover { text-decoration: underline; text-decoration-color: var(--sun); text-decoration-thickness: 3px; text-underline-offset: 6px; }
 
-  .hero-body {
-    position: relative; z-index: 2; margin-top: auto;
-    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 32px;
-    padding: 0 var(--gutter);
-  }
+  /* Hero: il porto all'ora blu */
+  .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; overflow: hidden; background: #0B2744 url("../../assets/photos/porto-sera.jpg") 30% 40% / cover no-repeat; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,39,68,.55) 0%, rgba(11,39,68,0) 28%, rgba(11,39,68,.35) 55%, rgba(11,39,68,.96) 100%); }
+  .hero-body { position: relative; z-index: 2; margin-top: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 32px; padding: 0 var(--gutter); }
   .hero-text { padding-bottom: clamp(36px, 6vw, 80px); }
   h1 { margin: 0 0 22px; font-weight: 800; font-size: clamp(48px, 8.6vw, 132px); line-height: .92; letter-spacing: -0.028em; word-spacing: 0.06em; max-width: 11ch; }
   .lead { margin: 0 0 30px; max-width: 34ch; font-size: clamp(19px, 1.9vw, 24px); line-height: 1.4; color: #E9F2FA; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .soon { margin: 16px 0 0; font-size: 16px; color: #CFE0EE; }
-
+  .scroll-hint { margin: 26px 0 0; display: flex; align-items: center; gap: 12px; font-size: 16px; color: #E9F2FA; }
+  .scroll-hint i { display: block; width: 2px; height: 34px; background: rgba(255,255,255,.35); position: relative; overflow: hidden; }
+  .scroll-hint i::after { content: ""; position: absolute; left: 0; top: -40%; width: 100%; height: 40%; background: var(--sun); animation: drip 1.8s ease-in-out infinite; }
+  @keyframes drip { to { top: 100%; } }
   .phone { width: clamp(230px, 24vw, 320px); margin-right: clamp(0px, 3vw, 48px); }
-  .phone img {
-    width: 100%; border: 9px solid #0B1A2B; border-bottom: 0; border-radius: 40px 40px 0 0;
-    box-shadow: 0 -10px 60px rgba(252,227,72,.18), 0 20px 60px rgba(0,0,0,.45);
-    animation: rise 1.2s .2s cubic-bezier(.2,.7,.2,1) both;
-  }
+  .phone img { width: 100%; border: 9px solid #0B1A2B; border-bottom: 0; border-radius: 40px 40px 0 0; box-shadow: 0 -10px 60px rgba(252,227,72,.18), 0 20px 60px rgba(0,0,0,.45); animation: rise 1.2s .2s cubic-bezier(.2,.7,.2,1) both; }
   @keyframes rise { from { transform: translateY(90px); opacity: 0; } to { transform: none; opacity: 1; } }
 
-  /* Sezioni */
-  section { padding: clamp(56px, 8vw, 120px) var(--gutter); }
-  h2 { margin: 0; font-weight: 800; font-size: clamp(34px, 5vw, 68px); line-height: 1; letter-spacing: -0.03em; }
+  /* ===== Scrollstory: una giornata alle Egadi ===== */
+  .story { position: relative; height: 520svh; background: var(--deep); }
+  .stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+  .bg, .tint, .shade { position: absolute; inset: 0; }
+  .bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; will-change: opacity, transform; }
+  .bg img:first-child { opacity: 1; }
+  .tint { background: rgba(255,190,110,.2); mix-blend-mode: normal; }
+  .shade { background: linear-gradient(0deg, rgba(8,24,44,.88) 0%, rgba(8,24,44,.55) 34%, rgba(8,24,44,0) 62%), linear-gradient(180deg, rgba(8,24,44,.5), rgba(8,24,44,0) 26%); }
 
-  .gallery-sec { background: var(--night); padding-bottom: clamp(48px, 6vw, 88px); }
-  .gallery-sec h2 { max-width: 16ch; }
-  .gallery {
-    display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 44px calc(var(--gutter) * -1) 0; padding: 0 var(--gutter) 18px;
-    scrollbar-color: var(--sky) transparent; scroll-padding-left: var(--gutter);
-  }
-  .gallery figure { margin: 0; flex: 0 0 auto; scroll-snap-align: start; }
-  .gallery img { height: clamp(260px, 42vw, 480px); width: auto; border-radius: 8px; }
-  .gallery figcaption { margin-top: 10px; font-size: 16px; color: #CFE0EE; }
+  .clock { position: absolute; z-index: 3; left: var(--gutter); top: clamp(80px, 12svh, 120px); display: flex; align-items: baseline; gap: 18px; }
+  .clock b { font-weight: 800; font-size: clamp(60px, 10vw, 150px); line-height: .9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; text-shadow: 0 4px 40px rgba(0,0,0,.35); }
+  .clock span { font-size: clamp(18px, 2vw, 26px); font-weight: 600; color: var(--sun); min-width: 9ch; }
 
-  .areas-sec { background: var(--deep); }
-  .areas { margin: 48px 0 0; padding: 0; list-style: none; }
-  .areas li { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 8px 40px; align-items: baseline; padding: 26px 0; border-top: 1px solid rgba(255,255,255,.22); }
-  .areas li:last-child { border-bottom: 1px solid rgba(255,255,255,.22); }
-  .areas h3 { margin: 0; font-weight: 600; font-size: clamp(30px, 4.6vw, 60px); line-height: 1.05; letter-spacing: -0.025em; }
-  .areas p { margin: 0; max-width: 36ch; color: #E1EDF7; }
+  .chapters { position: absolute; z-index: 3; left: var(--gutter); bottom: clamp(48px, 9svh, 110px); width: min(560px, calc(100% - 2 * var(--gutter))); }
+  .chap { position: absolute; left: 0; bottom: 0; width: 100%; opacity: 0; will-change: opacity, transform; }
+  .chap h2 { margin: 0 0 12px; font-weight: 800; font-size: clamp(36px, 5.4vw, 76px); line-height: .98; letter-spacing: -0.03em; }
+  .chap p { margin: 0 0 18px; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.45; color: #EAF3FB; max-width: 34ch; }
+  .chap .btn { margin-top: 4px; }
 
-  .islands { margin-top: 72px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .ph { position: absolute; z-index: 3; right: calc(var(--gutter) + clamp(0px, 4vw, 70px)); top: 50%; transform: translateY(-50%); width: clamp(220px, 22vw, 330px); aspect-ratio: 462 / 954; }
+  .ph .screen { position: relative; width: 100%; height: 100%; border: 9px solid #0B1A2B; border-radius: 42px; overflow: hidden; background: #fff; box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08); }
+  .ph .screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; will-change: opacity, transform; }
+  .ph .screen img:first-child { opacity: 1; }
+
+  .ticks { position: absolute; z-index: 4; left: calc(var(--gutter) / 2 - 7px); top: 50%; transform: translateY(-50%); margin: 0; padding: 0; list-style: none; display: grid; gap: 18px; }
+  .ticks li { width: 10px; height: 10px; border-radius: 50%; border: 2px solid rgba(255,255,255,.7); transition: background-color .3s ease, transform .3s ease; }
+  .ticks li.on { background: var(--sun); border-color: var(--sun); transform: scale(1.35); }
+
+  /* ===== Le tre isole ===== */
+  section.plain { padding: clamp(56px, 8vw, 120px) var(--gutter); }
+  h2.big { margin: 0; font-weight: 800; font-size: clamp(34px, 5vw, 68px); line-height: 1; letter-spacing: -0.03em; }
+  .islands-sec { background: var(--deep); }
+  .islands-sec h2 { max-width: 16ch; }
+  .islands { margin-top: 56px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .islands > div { padding: 0 28px 0 0; }
   .islands > div + div { padding-left: 28px; border-left: 3px solid var(--sun); }
   .islands h3 { margin: 0 0 8px; font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
   .islands p { margin: 0; color: #E1EDF7; max-width: 28ch; }
 
-  .partner-sec { background: var(--cream); color: var(--ink); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px clamp(32px, 7vw, 112px); align-items: end; padding-bottom: 0; }
+  .partner-sec { background: var(--cream); color: var(--ink); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px clamp(32px, 7vw, 112px); align-items: end; padding: clamp(56px, 8vw, 120px) var(--gutter) 0; }
   .partner-sec h2 { color: var(--ink); max-width: 14ch; }
   .partner-sec .txt { padding-bottom: clamp(56px, 8vw, 120px); }
   .partner-sec ul { margin: 28px 0; padding: 0; list-style: none; font-size: 20px; }
   .partner-sec li { padding: 10px 0; border-top: 2px solid rgba(20,40,60,.25); }
   .partner-sec small { display: block; margin-top: 16px; font-size: 17px; }
-  .partner-sec .phone { margin: 0 auto; width: clamp(230px, 26vw, 330px); }
-  .partner-sec .phone img { box-shadow: 0 -6px 40px rgba(20,40,60,.25); animation: none; border-color: var(--ink); }
+  .partner-sec .pp { margin: 0 auto; width: clamp(230px, 26vw, 330px); }
+  .partner-sec .pp img { width: 100%; border: 9px solid var(--ink); border-bottom: 0; border-radius: 40px 40px 0 0; box-shadow: 0 -6px 40px rgba(20,40,60,.25); }
 
   footer { background: var(--deep); padding: 64px var(--gutter) 36px; }
-  footer h2 { font-size: clamp(30px, 4vw, 48px); max-width: 18ch; margin-bottom: 20px; }
+  footer h2 { font-weight: 800; font-size: clamp(30px, 4vw, 48px); line-height: 1; letter-spacing: -0.03em; max-width: 18ch; margin: 0 0 20px; }
   form { display: flex; flex-wrap: wrap; gap: 12px; max-width: 560px; }
   .field { flex: 1 1 260px; }
   input[type=email] { width: 100%; font: 400 18px "Bricolage Grotesque", sans-serif; padding: 15px 18px; border-radius: 10px; border: 2px solid rgba(255,255,255,.5); background: rgba(255,255,255,.08); color: #fff; }
@@ -123,16 +121,35 @@
     .hero { background-position: 22% 30%; }
     .hero-body { grid-template-columns: 1fr; }
     .hero-body .phone { display: none; }
-    .areas li, .partner-sec { grid-template-columns: 1fr; }
+    .top nav a:not(.btn) { display: none; }
+    .story { height: 460svh; }
+    .ph { right: 50%; transform: translate(50%, 0); top: clamp(92px, 13svh, 120px); width: clamp(120px, 24svh, 190px); }
+    .clock { top: 24px; bottom: auto; left: var(--gutter); }
+    .clock b { font-size: 46px; }
+    .clock span { font-size: 17px; }
+    .chapters { bottom: clamp(36px, 6svh, 70px); }
+    .chap h2 { font-size: 34px; }
+    .chap p { font-size: 17px; }
+    .ticks { display: none; }
     .islands { grid-template-columns: 1fr; gap: 28px; }
     .islands > div, .islands > div + div { padding: 0 0 0 20px; border-left: 3px solid var(--sun); }
-    .partner-sec .phone { width: min(260px, 70%); }
-    .top nav a:not(.btn) { display: none; }
+    .partner-sec { grid-template-columns: 1fr; }
+    .partner-sec .pp { width: min(260px, 70%); }
   }
+  @media (max-height: 560px) and (min-width: 861px) { .clock b { font-size: 64px; } .chap h2 { font-size: 40px; } }
+
+  /* Con movimento ridotto la storia diventa una sequenza di capitoli statici */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .phone img { animation: none; }
-    .btn { transition: none; }
+    .phone img, .scroll-hint i::after { animation: none; }
+    .story { height: auto; }
+    .stage { position: relative; height: auto; overflow: visible; padding: 72px var(--gutter); display: grid; gap: 40px; background: var(--night); }
+    .bg, .tint, .shade, .clock, .ticks { display: none; }
+    .chapters { position: static; width: auto; display: grid; gap: 40px; }
+    .chap { position: static; opacity: 1 !important; transform: none !important; }
+    .ph { position: static; transform: none; margin: 0 auto; }
+    .ph .screen img { position: static; opacity: 1 !important; transform: none !important; display: none; }
+    .ph .screen img:first-child { display: block; }
   }
 </style>
 </head>
@@ -156,33 +173,61 @@
         <a class="btn btn-line" href="#partner">Ho un'attività</a>
       </div>
       <p class="soon">L'app arriva presto su App Store e Google Play.</p>
+      <p class="scroll-hint"><i aria-hidden="true"></i>Scorri e vivi una giornata alle Egadi</p>
     </div>
-    <div class="phone" aria-hidden="true"><img src="../../assets/app/esperienze.png" alt="" width="462" height="954"></div>
+    <div class="phone" aria-hidden="true"><img src="../../assets/app/esperienze.png" alt="" width="462" height="964"></div>
   </div>
 </header>
 
 <main>
-  <section class="gallery-sec" aria-labelledby="mare-t">
-    <h2 id="mare-t">Il mare entra nelle grotte, il paese resta sveglio fino a tardi.</h2>
-    <div class="gallery" role="region" aria-label="Foto di Marettimo" tabindex="0">
-      <figure><img src="../../assets/photos/grotta-azzurra.jpg" alt="Acqua azzurra dentro una grotta" width="1600" height="1067"><figcaption>Una grotta vista dal mare</figcaption></figure>
-      <figure><img src="../../assets/photos/via-notte.jpg" alt="Una via del paese di sera, con i tavoli all'aperto" width="1600" height="1067"><figcaption>Una via di Marettimo di sera</figcaption></figure>
-      <figure><img src="../../assets/photos/arco-faraglione.jpg" alt="Un faraglione visto da una grotta sul mare" width="1600" height="1067"><figcaption>Un faraglione dalla grotta</figcaption></figure>
-      <figure><img src="../../assets/photos/marettimo-dall-alto.jpg" alt="Il paese di Marettimo visto dal sentiero" width="1600" height="1067"><figcaption>Marettimo dal sentiero</figcaption></figure>
-      <figure><img src="../../assets/photos/grotta-arco.jpg" alt="Un arco di roccia in una grotta" width="1600" height="1064"><figcaption>Un arco di roccia sul mare</figcaption></figure>
+  <section class="story" id="app" aria-label="Una giornata alle Egadi">
+    <div class="stage" id="stage">
+      <div class="bg" aria-hidden="true">
+        <img src="../../assets/photos/marettimo-dall-alto.jpg" alt="" width="1600" height="1067">
+        <img src="../../assets/photos/grotta-azzurra.jpg" alt="" width="1600" height="1067">
+        <img src="../../assets/photos/via-notte.jpg" alt="" width="1600" height="1067">
+        <img src="../../assets/photos/porto-sera.jpg" alt="" width="1800" height="1013">
+      </div>
+      <div class="tint" id="tint" aria-hidden="true"></div>
+      <div class="shade" aria-hidden="true"></div>
+
+      <div class="clock" aria-hidden="true"><b id="clock">08:00</b><span id="part">Mattina</span></div>
+
+      <div class="chapters" id="chapters">
+        <article class="chap">
+          <h2>Sveglia sul porto.</h2>
+          <p>Scegli dove dormire tra hotel, bed and breakfast, case e resort. Scrivi direttamente a chi ti ospita.</p>
+        </article>
+        <article class="chap">
+          <h2>Il mare ti aspetta.</h2>
+          <p>Tour in barca, natura e sport. Cerca per isola e filtra per tipo di esperienza.</p>
+        </article>
+        <article class="chap">
+          <h2>Cena con vista.</h2>
+          <p>Trova il ristorante in base ai tuoi gusti, leggi la descrizione e guarda dov'è sulla mappa.</p>
+        </article>
+        <article class="chap">
+          <h2>Domani si ricomincia.</h2>
+          <p>Calette, chiese e luoghi nascosti, segnalati da chi vive sulle isole. Quando l'app esce, ti avvisiamo.</p>
+          <a class="btn" href="#contatti">Avvisami al lancio</a>
+        </article>
+      </div>
+
+      <div class="ph" aria-hidden="true">
+        <div class="screen" id="screen">
+          <img src="../../assets/app/home-completa.png" alt="" width="576" height="1189">
+          <img src="../../assets/app/esperienze.png" alt="" width="462" height="964">
+          <img src="../../assets/app/scheda.png" alt="" width="460" height="944">
+        </div>
+      </div>
+
+      <ol class="ticks" id="ticks" aria-hidden="true"><li></li><li></li><li></li><li></li></ol>
     </div>
   </section>
 
-  <section class="areas-sec" id="app" aria-labelledby="app-t">
-    <h2 id="app-t">Quattro voci, tutto quello che serve.</h2>
-    <ul class="areas">
-      <li><h3>Dove dormire</h3><p>Hotel, bed and breakfast, case e resort, con foto, stelle e contatto diretto.</p></li>
-      <li><h3>Esperienze</h3><p>Tour in barca, degustazioni, natura e sport, scelti per isola.</p></li>
-      <li><h3>Dove mangiare</h3><p>Ristoranti da cercare in base ai tuoi gusti, con la posizione sulla mappa.</p></li>
-      <li><h3>Punti di interesse</h3><p>Calette, chiese e luoghi nascosti, segnalati da chi le isole le conosce.</p></li>
-    </ul>
-
-    <div class="islands" id="isole">
+  <section class="plain islands-sec" id="isole" aria-labelledby="isole-t">
+    <h2 class="big" id="isole-t">Tre isole, un'unica app.</h2>
+    <div class="islands">
       <div><h3>Favignana</h3><p>Il gioiello delle Egadi, la più grande e la più vicina alla costa.</p></div>
       <div><h3>Levanzo</h3><p>La più piccola e tranquilla, con la Grotta del Genovese.</p></div>
       <div><h3>Marettimo</h3><p>La più lontana e selvaggia, tra sentieri, grotte e mare profondo.</p></div>
@@ -191,7 +236,7 @@
 
   <section class="partner-sec on-cream" id="partner" aria-labelledby="partner-t">
     <div class="txt">
-      <h2 id="partner-t">Hai un'attività alle Egadi?</h2>
+      <h2 class="big" id="partner-t">Hai un'attività alle Egadi?</h2>
       <ul>
         <li>Una scheda con foto e descrizione</li>
         <li>Contatti diretti con i clienti</li>
@@ -200,7 +245,7 @@
       <a class="btn btn-sea" href="#contatti">Entra come partner</a>
       <small>L'inserimento è gratuito fino a dicembre 2026.</small>
     </div>
-    <div class="phone" aria-hidden="true"><img src="../../assets/app/scheda.png" alt="" width="460" height="944"></div>
+    <div class="pp" aria-hidden="true"><img src="../../assets/app/scheda.png" alt="" width="460" height="944"></div>
   </section>
 </main>
 
@@ -216,6 +261,70 @@
   </form>
   <p class="legal"><span>Travel Egadi, Smart Egadi Islands 4.0</span><span>Favignana, Levanzo, Marettimo</span></p>
 </footer>
+
+<script>
+/* Scrollstory: l'avanzamento dello scorrimento (0..1) guida foto di sfondo, colore del cielo, orologio,
+   capitoli e schermata del telefono. Quattro tappe: mattina, mezzogiorno, sera, notte. */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var sec = document.getElementById('app');
+  var bgs = Array.prototype.slice.call(sec.querySelectorAll('.bg img'));
+  var chaps = Array.prototype.slice.call(sec.querySelectorAll('.chap'));
+  var scr = Array.prototype.slice.call(document.querySelectorAll('#screen img'));   // home, esperienze, scheda
+  var ticks = Array.prototype.slice.call(document.querySelectorAll('#ticks li'));
+  var tint = document.getElementById('tint'), clock = document.getElementById('clock'), part = document.getElementById('part');
+  var N = bgs.length, parts = ['Mattina', 'Mezzogiorno', 'Sera', 'Notte'];
+  var tints = [[255,190,110,.20], [16,112,184,.10], [11,39,68,.50], [6,18,38,.72]];   // colore del cielo per tappa
+  var ticking = false;
+
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function w(s, k, spread) { return clamp(1 - Math.abs(s - k) * spread, 0, 1); }
+  function ease(t) { return t * t * (3 - 2 * t); }
+
+  function update() {
+    ticking = false;
+    var r = sec.getBoundingClientRect();
+    var total = sec.offsetHeight - window.innerHeight;
+    var p = clamp(-r.top / total, 0, 1);
+    var s = Math.min(p / 0.92, 1) * (N - 1);
+
+    bgs.forEach(function (im, k) {
+      im.style.opacity = ease(w(s, k, 1));
+      im.style.transform = 'scale(' + (1.04 + (s - k) * 0.025) + ')';
+    });
+    chaps.forEach(function (c, k) {
+      var o = clamp(1 - Math.abs(s - k) * 2.4, 0, 1);
+      c.style.opacity = o;
+      c.style.transform = 'translateY(' + ((s - k) * -46) + 'px)';
+      c.style.pointerEvents = o > 0.6 ? 'auto' : 'none';
+    });
+    /* schermate del telefono: home, esperienze, scheda (che poi scorre fino alla mappa) */
+    scr[0].style.opacity = ease(w(s, 0, 1.4));
+    scr[1].style.opacity = ease(w(s, 1, 1.4));
+    var sk = Math.max(w(s, 2, 1.4), w(s, 3, 1.4));
+    scr[2].style.opacity = ease(clamp(sk, 0, 1));
+    scr[2].style.transformOrigin = '50% 100%';
+    scr[2].style.transform = 'scale(' + (1 + 0.06 * ease(clamp(s - 2, 0, 1))) + ')';
+    scr[0].style.transform = 'translateY(' + (-6 * s) + '%)';
+
+    /* cielo */
+    var i = Math.min(Math.floor(s), N - 2), f = s - i, a = tints[i], b = tints[i + 1];
+    var c = [0, 1, 2, 3].map(function (j) { return a[j] + (b[j] - a[j]) * f; });
+    tint.style.background = 'rgba(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ',' + c[3].toFixed(3) + ')';
+
+    /* orologio: dalle 08:00 alle 22:30 */
+    var h = 8 + p * 14.5, hh = Math.floor(h), mm = Math.floor((h - hh) * 60 / 5) * 5;
+    clock.textContent = (hh < 10 ? '0' : '') + hh + ':' + (mm < 10 ? '0' : '') + mm;
+    var near = Math.round(s);
+    part.textContent = parts[near];
+    ticks.forEach(function (t, k) { t.className = k === near ? 'on' : ''; });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script>
 
 </body>
 </html>

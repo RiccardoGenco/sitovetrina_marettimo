@@ -79,3 +79,7 @@ Esempio di titolo hero: "Le Egadi, tutte in un'app". Seconda riga: "Dormire, man
 ## Riferimenti da cercare
 
 Landing page di app di viaggio dal tono caldo (Airbnb Experiences, Wanderlog), siti di pro loco e consorzi turistici ben fatti.
+
+## Idea interattiva: carosello 3D delle schermate
+
+La sezione "Sfoglia l'app" mostra le schermate del mock (home, esperienze, scheda) in un carosello 3D. Il telefono centrale è in primo piano, i laterali restano inclinati sullo sfondo, il sole del logo scorre dietro a ogni passaggio e le onde accompagnano il movimento. Si naviga con frecce, puntini, tastiera, trascinamento o clic sui telefoni laterali. Scorre da solo ogni 5,5 secondi e si ferma al passaggio del mouse, con il pulsante di pausa e con `prefers-reduced-motion`.

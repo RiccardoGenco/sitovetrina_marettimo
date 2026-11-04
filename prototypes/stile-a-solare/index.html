@@ -19,98 +19,90 @@
     --ink: #14283C;
     --white: #FFFFFF;
     --gutter: clamp(20px, 5vw, 72px);
+    --ease: cubic-bezier(.22, .8, .24, 1);
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: "Outfit", system-ui, sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-    color: var(--ink);
-    background: var(--cream);
-  }
+  body { margin: 0; font-family: "Outfit", system-ui, sans-serif; font-size: 18px; line-height: 1.6; color: var(--ink); background: var(--cream); }
   img { display: block; max-width: 100%; height: auto; }
   a { color: inherit; }
+  button { font: inherit; color: inherit; }
   :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
   .on-sea :focus-visible { outline-color: var(--sun); }
 
   /* Barra in alto */
-  .top {
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    padding: 18px var(--gutter);
-    position: relative; z-index: 5;
-  }
-  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; font-size: 22px; color: var(--slate); }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px var(--gutter); position: relative; z-index: 5; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; font-size: 22px; color: var(--slate); white-space: nowrap; }
   .brand img { width: 44px; height: 44px; }
   .top nav { display: flex; align-items: center; gap: clamp(14px, 3vw, 34px); font-weight: 600; font-size: 17px; }
   .top nav a { text-decoration: none; padding: 6px 2px; }
-  .top nav a.btn { padding: 12px 22px; font-size: 17px; }
-  .top nav a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--sun); text-underline-offset: 6px; }
-  .btn {
-    display: inline-block; text-decoration: none; font-weight: 600; font-size: 18px;
-    padding: 14px 26px; border-radius: 999px; border: 0; cursor: pointer; font-family: inherit;
-    transition: transform .15s ease, background-color .15s ease;
-  }
+  .top nav a.btn { padding: 12px 22px; font-size: 17px; white-space: nowrap; }
+  .top nav a:not(.btn):hover { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--sun); text-underline-offset: 6px; }
+  .btn { display: inline-block; text-decoration: none; font-weight: 600; font-size: 18px; padding: 14px 26px; border-radius: 999px; border: 0; cursor: pointer; font-family: inherit; transition: transform .15s ease, background-color .15s ease; }
   .btn:hover { transform: translateY(-2px); }
   .btn-sea { background: var(--sea); color: var(--white); }
   .btn-sea:hover { background: #0C5E9C; }
   .btn-ink { background: var(--ink); color: var(--white); }
   .btn-ghost { background: transparent; color: var(--slate); box-shadow: inset 0 0 0 2px var(--slate); }
 
-  /* Hero: il sole che tramonta nel mare, con il telefono che emerge */
-  .hero {
-    position: relative; overflow: hidden;
-    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    align-items: center; gap: 24px;
-    padding: 24px var(--gutter) 0;
-    min-height: min(820px, calc(100svh - 80px));
-  }
+  /* Hero */
+  .hero { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: center; gap: 24px; padding: 24px var(--gutter) 0; min-height: min(820px, calc(100svh - 80px)); }
   .hero-text { position: relative; z-index: 3; padding-bottom: 150px; }
-  h1 {
-    margin: 0 0 22px; font-weight: 800; color: var(--slate);
-    font-size: clamp(46px, 7.4vw, 104px); line-height: .96; letter-spacing: -0.035em;
-  }
+  h1 { margin: 0 0 22px; font-weight: 800; color: var(--slate); font-size: clamp(46px, 7.4vw, 104px); line-height: .96; letter-spacing: -0.035em; }
   .lead { max-width: 30ch; font-size: clamp(20px, 2.1vw, 26px); line-height: 1.4; margin: 0 0 32px; }
   .actions { display: flex; flex-wrap: wrap; gap: 14px; }
   .soon { margin: 18px 0 0; font-size: 16px; color: var(--slate); }
-
   .scene { position: relative; align-self: stretch; min-height: 520px; }
-  .sun {
-    position: absolute; right: -4%; top: 6%;
-    width: min(600px, 96%); aspect-ratio: 1; border-radius: 50%; background: var(--sun);
-  }
-  .phone {
-    position: absolute; left: 50%; bottom: 0; transform: translateX(-46%);
-    width: clamp(220px, 26vw, 330px); z-index: 2;
-  }
-  .phone img {
-    width: 100%; border: 9px solid var(--ink); border-bottom: 0; border-radius: 40px 40px 0 0;
-    box-shadow: 0 30px 60px rgba(20, 40, 60, .25);
-    animation: rise 1.1s cubic-bezier(.2,.7,.2,1) both;
-  }
+  .sun { position: absolute; right: -4%; top: 6%; width: min(600px, 96%); aspect-ratio: 1; border-radius: 50%; background: var(--sun); }
+  .phone { position: absolute; left: 50%; bottom: 0; transform: translateX(-46%); width: clamp(220px, 26vw, 330px); z-index: 2; }
+  .phone img { width: 100%; border: 9px solid var(--ink); border-bottom: 0; border-radius: 40px 40px 0 0; box-shadow: 0 30px 60px rgba(20, 40, 60, .25); animation: rise 1.1s var(--ease) both; }
   @keyframes rise { from { transform: translateY(70px); opacity: 0; } to { transform: none; opacity: 1; } }
-
   .waves { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(90px, 13vw, 170px); z-index: 4; display: block; }
 
-  /* Il mare: le quattro aree dell'app */
-  .sea { background: var(--sea); color: var(--white); padding: 40px var(--gutter) 120px; }
-  .sea h2, .islands h2, .partner h2 { margin: 0; font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; font-size: clamp(34px, 5vw, 64px); }
-  .sea h2 { max-width: 14ch; }
-  .areas { margin: 56px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(28px, 6vw, 96px); }
-  .areas li { border-top: 2px solid rgba(255,255,255,.4); padding: 24px 0 36px; }
-  .areas h3 { margin: 0 0 8px; font-size: clamp(24px, 2.6vw, 32px); font-weight: 600; display: flex; align-items: center; gap: 14px; }
-  .areas h3::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--sun); flex: none; }
-  .areas p { margin: 0; max-width: 36ch; }
+  /* ===== Carosello delle schermate ===== */
+  .deck-sec { background: var(--sea); color: var(--white); padding: 24px var(--gutter) 96px; overflow: hidden; position: relative; }
+  .deck-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); gap: 32px clamp(24px, 5vw, 80px); align-items: center; }
+  .deck-sec h2 { margin: 0 0 20px; font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; font-size: clamp(34px, 5vw, 64px); }
+  .caps { display: grid; min-height: 12.5em; }
+  .cap { grid-area: 1 / 1; opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .6s var(--ease); pointer-events: none; }
+  .cap[aria-hidden="false"] { opacity: 1; transform: none; pointer-events: auto; transition-delay: .12s; }
+  .cap h3 { margin: 0 0 10px; font-size: clamp(26px, 3vw, 38px); font-weight: 600; line-height: 1.1; }
+  .cap p { margin: 0; max-width: 34ch; font-size: 19px; }
+  .cap ul { margin: 18px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .cap li { padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,.16); font-size: 16px; font-weight: 600; }
 
-  /* Le isole: il bagnasciuga */
-  .islands { background: var(--white); margin-top: -72px; border-radius: 56px 56px 0 0; padding: 88px var(--gutter) 40px; position: relative; z-index: 2; }
+  .ctrl { display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+  .ctrl button { cursor: pointer; border: 2px solid rgba(255,255,255,.7); background: transparent; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; transition: background-color .15s ease, color .15s ease; }
+  .ctrl button:hover { background: var(--sun); border-color: var(--sun); color: var(--ink); }
+  .ctrl svg { width: 20px; height: 20px; }
+  .dots { display: flex; gap: 8px; margin: 0 8px; }
+  .dots button { width: 14px; height: 14px; padding: 0; border-width: 2px; }
+  .dots button[aria-current="true"] { background: var(--sun); border-color: var(--sun); width: 36px; border-radius: 999px; transition: width .3s var(--ease); }
+  .timer { height: 3px; width: 100%; max-width: 280px; margin-top: 22px; background: rgba(255,255,255,.25); border-radius: 3px; overflow: hidden; }
+  .timer i { display: block; height: 100%; width: 100%; background: var(--sun); transform-origin: 0 50%; transform: scaleX(0); }
+  .timer.run i { animation: fill var(--t, 5.5s) linear forwards; }
+  @keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  .stage { position: relative; height: clamp(440px, 56vw, 660px); perspective: 1400px; touch-action: pan-y; cursor: grab; outline-offset: 6px; }
+  .stage:active { cursor: grabbing; }
+  .sun-bg { position: absolute; left: 50%; top: 52%; width: clamp(300px, 40vw, 520px); aspect-ratio: 1; margin: calc(clamp(300px, 40vw, 520px) / -2) 0 0 calc(clamp(300px, 40vw, 520px) / -2); border-radius: 50%; background: var(--sun); transform: translate(var(--sx, 0), var(--sy, 0)) scale(var(--ss, 1)); transition: transform 1s var(--ease); }
+  .phones { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; transform-style: preserve-3d; }
+  .phones li { --ph: clamp(380px, 48vw, 580px); position: absolute; left: 50%; top: 50%; height: var(--ph); aspect-ratio: 462 / 954; margin-top: calc(var(--ph) / -2);
+    transition: transform .9s var(--ease), opacity .6s ease, filter .6s ease; will-change: transform; }
+  .screen { width: 100%; height: 100%; border: 9px solid #0B1A2B; border-radius: 42px; overflow: hidden; background: #fff; box-shadow: 0 30px 70px rgba(5, 25, 50, .45); }
+  .screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; user-select: none; -webkit-user-drag: none; }
+  .phones li[data-pos="0"]  { transform: translateX(-50%) scale(1); z-index: 3; opacity: 1; }
+  .phones li[data-pos="-1"] { transform: translateX(calc(-50% - 78%)) translateZ(-180px) rotateY(26deg) scale(.8); z-index: 2; opacity: 1; filter: brightness(.72) saturate(.8); cursor: pointer; }
+  .phones li[data-pos="1"]  { transform: translateX(calc(-50% + 78%)) translateZ(-180px) rotateY(-26deg) scale(.8); z-index: 2; opacity: 1; filter: brightness(.72) saturate(.8); cursor: pointer; }
+  .phones li[data-pos="0"] .screen { box-shadow: 0 34px 80px rgba(5, 25, 50, .55); }
+  .stage-waves { position: absolute; left: -5%; bottom: 70px; width: 110%; height: 120px; pointer-events: none; transition: transform 1.2s var(--ease); transform: translateX(var(--wx, 0)); z-index: 4; }
+
+  /* Le isole */
+  .islands { background: var(--white); margin-top: -72px; border-radius: 56px 56px 0 0; padding: 88px var(--gutter) 40px; position: relative; z-index: 5; }
+  .islands h2, .partner h2 { margin: 0; font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; font-size: clamp(34px, 5vw, 64px); }
   .islands h2 { color: var(--slate); max-width: 16ch; }
   .rows { margin: 48px 0 0; padding: 0; list-style: none; }
-  .rows li {
-    display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: baseline; gap: 12px 40px;
-    padding: 20px 0; border-top: 3px solid var(--sun);
-  }
+  .rows li { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: baseline; gap: 12px 40px; padding: 20px 0; border-top: 3px solid var(--sun); }
   .rows li:last-child { border-bottom: 3px solid var(--sun); }
   .rows b { font-size: clamp(42px, 8.5vw, 124px); line-height: 1; font-weight: 800; letter-spacing: -0.04em; color: var(--slate); }
   .rows span { font-size: 19px; max-width: 32ch; }
@@ -118,7 +110,6 @@
   figure img { width: 100%; height: clamp(220px, 38vw, 480px); object-fit: cover; border-radius: 36px; }
   figcaption { margin-top: 12px; font-size: 16px; color: var(--slate); }
 
-  /* Partner */
   .partner-wrap { background: var(--white); padding: 56px var(--gutter) 72px; }
   .partner { background: var(--sun); border-radius: 44px; padding: clamp(32px, 6vw, 80px); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px 64px; align-items: end; }
   .partner h2 { max-width: 13ch; }
@@ -126,34 +117,37 @@
   .partner li { padding: 10px 0; border-top: 2px solid rgba(20,40,60,.25); }
   .partner p { margin: 22px 0 0; max-width: 34ch; }
 
-  /* Contatti */
   footer { background: var(--cream); padding: 64px var(--gutter) 40px; }
   footer h2 { margin: 0 0 20px; font-size: clamp(30px, 4vw, 48px); font-weight: 800; color: var(--slate); letter-spacing: -0.02em; line-height: 1.05; max-width: 18ch; }
   form { display: flex; flex-wrap: wrap; gap: 12px; max-width: 560px; }
   .field { flex: 1 1 260px; }
-  input[type=email] {
-    width: 100%; font: inherit; padding: 14px 22px; border-radius: 999px; border: 2px solid var(--slate); background: var(--white); color: var(--ink);
-  }
+  input[type=email] { width: 100%; font: inherit; padding: 14px 22px; border-radius: 999px; border: 2px solid var(--slate); background: var(--white); color: var(--ink); }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .legal { margin: 56px 0 0; font-size: 15px; color: var(--slate); display: flex; flex-wrap: wrap; gap: 6px 28px; }
 
-  @media (max-width: 860px) {
+  @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; padding-top: 8px; }
     .hero-text { padding-bottom: 8px; }
-    .scene { min-height: 440px; margin-bottom: 0; }
+    .scene { min-height: 440px; }
     .sun { right: 50%; transform: translateX(50%); top: 0; width: min(420px, 92%); }
     .phone { transform: translateX(-50%); width: min(250px, 58%); }
-    .areas { grid-template-columns: 1fr; }
+    .deck-grid { grid-template-columns: 1fr; }
+    .caps { min-height: 11em; }
     .rows li, .partner { grid-template-columns: 1fr; }
     .top nav a:not(.btn) { display: none; }
-    .brand { font-size: 19px; white-space: nowrap; }
+    .brand { font-size: 19px; }
     .brand img { width: 38px; height: 38px; }
-    .top nav a.btn { white-space: nowrap; padding: 10px 16px; font-size: 15px; }
+    .top nav a.btn { padding: 10px 16px; font-size: 15px; }
+    .phones li { --ph: min(78vw, 470px); }
+    .phones li[data-pos="-1"] { transform: translateX(calc(-50% - 62%)) translateZ(-160px) rotateY(24deg) scale(.78); }
+    .phones li[data-pos="1"]  { transform: translateX(calc(-50% + 62%)) translateZ(-160px) rotateY(-24deg) scale(.78); }
+    .stage { height: min(112vw, 560px); }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .phone img { animation: none; }
-    .btn { transition: none; }
+    .btn, .cap, .phones li, .sun-bg, .stage-waves, .dots button { transition: none !important; }
+    .timer { display: none; }
   }
 </style>
 </head>
@@ -190,26 +184,49 @@
     </svg>
   </section>
 
-  <section class="sea on-sea" id="app" aria-labelledby="aree">
-    <h2 id="aree">Quattro modi di vivere le isole</h2>
-    <ul class="areas">
-      <li>
-        <h3>Dove dormire</h3>
-        <p>Hotel, bed and breakfast, case e resort, con foto, stelle e contatto diretto.</p>
-      </li>
-      <li>
-        <h3>Esperienze</h3>
-        <p>Tour in barca, degustazioni, natura e sport, scelti per isola e per tipo di attività.</p>
-      </li>
-      <li>
-        <h3>Dove mangiare</h3>
-        <p>Ristoranti da cercare in base ai tuoi gusti, con descrizione e posizione sulla mappa.</p>
-      </li>
-      <li>
-        <h3>Punti di interesse</h3>
-        <p>Chiese, calette e luoghi nascosti, raccontati da chi le isole le conosce a memoria.</p>
-      </li>
-    </ul>
+  <section class="deck-sec on-sea" id="app" aria-roledescription="carosello" aria-label="Le schermate dell'app">
+    <div class="deck-grid">
+      <div class="deck-text">
+        <h2>Sfoglia l'app</h2>
+        <div class="caps" id="caps" aria-live="polite">
+          <div class="cap" aria-hidden="false">
+            <h3>Cerca, scegli, parti.</h3>
+            <p>Una ricerca per luogo, date e ospiti, e quattro voci in alto per andare dritto a quello che ti serve. In evidenza le strutture da non perdere.</p>
+            <ul><li>Dove dormire</li><li>Esperienze</li><li>Dove mangiare</li></ul>
+          </div>
+          <div class="cap" aria-hidden="true">
+            <h3>Esperienze per ogni isola.</h3>
+            <p>Tour in barca, natura e sport, da filtrare per tipo di attività. Ogni scheda ha foto, stelle e indirizzo.</p>
+            <ul><li>Intrattenimento</li><li>Natura e spazi aperti</li><li>Sport</li></ul>
+          </div>
+          <div class="cap" aria-hidden="true">
+            <h3>Una scheda per ogni attività.</h3>
+            <p>Foto, descrizione, indirizzo, recensioni e posizione sulla mappa, con il contatto diretto per chi ospita o gestisce.</p>
+            <ul><li>Contatto diretto</li><li>Recensioni</li><li>Mappa</li></ul>
+          </div>
+        </div>
+        <div class="ctrl">
+          <button type="button" id="prev" aria-label="Schermata precedente"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+          <div class="dots" id="dots"></div>
+          <button type="button" id="next" aria-label="Schermata successiva"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4 6 6-6 6"/></svg></button>
+          <button type="button" id="play" aria-label="Metti in pausa lo scorrimento automatico" aria-pressed="false"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><g id="i-pause"><rect x="5" y="4" width="3.6" height="12" rx="1"/><rect x="11.4" y="4" width="3.6" height="12" rx="1"/></g><path id="i-play" d="M6 4.2v11.6L16 10z" hidden/></svg></button>
+        </div>
+        <div class="timer" id="timer" aria-hidden="true"><i></i></div>
+      </div>
+
+      <div class="stage" id="stage" tabindex="0" aria-label="Schermate dell'app: usa le frecce per sfogliare">
+        <div class="sun-bg" id="sun" aria-hidden="true"></div>
+        <ul class="phones" id="phones">
+          <li><div class="screen"><img src="../../assets/app/home-completa.png" alt="Schermata iniziale: ricerca, voci di menu e strutture in evidenza" width="576" height="1189" draggable="false"></div></li>
+          <li><div class="screen"><img src="../../assets/app/esperienze.png" alt="Elenco delle esperienze con filtri per tipo" width="462" height="964" draggable="false"></div></li>
+          <li><div class="screen"><img src="../../assets/app/scheda.png" alt="Scheda di un ristorante con foto, descrizione e mappa" width="460" height="944" draggable="false"></div></li>
+        </ul>
+      </div>
+    </div>
+    <svg class="stage-waves" id="swaves" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 50 C 150 10, 300 90, 450 50 S 750 10, 900 50 S 1100 90, 1200 50 V120 H0Z" fill="#4AABD5"/>
+          <path d="M0 80 C 160 40, 320 110, 480 80 S 800 40, 960 80 S 1120 110, 1200 80 V120 H0Z" fill="#0C5E9C"/>
+        </svg>
   </section>
 
   <section class="islands" id="isole" aria-labelledby="isole-t">
@@ -253,6 +270,98 @@
   </form>
   <p class="legal"><span>Travel Egadi, Smart Egadi Islands 4.0</span><span>Favignana, Levanzo, Marettimo</span></p>
 </footer>
+
+<script>
+/* Carosello 3D delle schermate: frecce, punti, tastiera, trascinamento, click sulle schermate laterali,
+   scorrimento automatico con pausa. Il sole e le onde dietro seguono la schermata attiva. */
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var phones = Array.prototype.slice.call(document.querySelectorAll('#phones li'));
+  var caps = Array.prototype.slice.call(document.querySelectorAll('#caps .cap'));
+  var dotsBox = document.getElementById('dots');
+  var stage = document.getElementById('stage');
+  var sun = document.getElementById('sun');
+  var swaves = document.getElementById('swaves');
+  var timer = document.getElementById('timer');
+  var playBtn = document.getElementById('play');
+  var n = phones.length, idx = 0, playing = !reduce, hover = false, DUR = 5500, tm = null, started = false;
+
+  var dots = phones.map(function (_, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('aria-label', 'Vai alla schermata ' + (i + 1) + ' di ' + n);
+    b.addEventListener('click', function () { go(i, true); });
+    dotsBox.appendChild(b); return b;
+  });
+
+  var sunPos = [['-14%', '-4%', 1], ['0%', '0%', 1.08], ['14%', '-4%', 1]];
+  function render() {
+    phones.forEach(function (li, i) {
+      var off = ((i - idx + 1 + n * 3) % n) - 1;   // -1, 0, 1
+      li.setAttribute('data-pos', off);
+      li.setAttribute('aria-hidden', off === 0 ? 'false' : 'true');
+    });
+    caps.forEach(function (c, i) { c.setAttribute('aria-hidden', i === idx ? 'false' : 'true'); });
+    dots.forEach(function (d, i) { d.setAttribute('aria-current', i === idx ? 'true' : 'false'); });
+    var s = sunPos[idx];
+    sun.style.setProperty('--sx', s[0]); sun.style.setProperty('--sy', s[1]); sun.style.setProperty('--ss', s[2]);
+    swaves.style.setProperty('--wx', (idx - 1) * -2 + '%');
+    restartTimer();
+  }
+  function go(i, user) { idx = (i + n) % n; if (user) setPlaying(false, true); render(); }
+  function restartTimer() {
+    clearTimeout(tm);
+    timer.classList.remove('run');
+    if (!playing || reduce) return;
+    void timer.offsetWidth;                         // riavvia l'animazione della barra
+    timer.style.setProperty('--t', DUR + 'ms');
+    timer.classList.add('run');
+    tm = setTimeout(function () { if (!hover && !document.hidden) { idx = (idx + 1) % n; render(); } else { restartTimer(); } }, DUR);
+  }
+  function setPlaying(v, quiet) {
+    playing = v && !reduce;
+    playBtn.setAttribute('aria-pressed', String(!playing));
+    playBtn.setAttribute('aria-label', playing ? 'Metti in pausa lo scorrimento automatico' : 'Riavvia lo scorrimento automatico');
+    document.getElementById('i-pause').hidden = !playing;
+    document.getElementById('i-play').hidden = playing;
+    if (!quiet) restartTimer();
+  }
+
+  document.getElementById('prev').addEventListener('click', function () { go(idx - 1, true); });
+  document.getElementById('next').addEventListener('click', function () { go(idx + 1, true); });
+  playBtn.addEventListener('click', function () { setPlaying(!playing); });
+  stage.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { go(idx + 1, true); e.preventDefault(); }
+    if (e.key === 'ArrowLeft') { go(idx - 1, true); e.preventDefault(); }
+  });
+  stage.addEventListener('mouseenter', function () { hover = true; });
+  stage.addEventListener('mouseleave', function () { hover = false; });
+
+  /* trascinamento con mouse, dito o penna */
+  var x0 = null, moved = 0;
+  stage.addEventListener('pointerdown', function (e) { x0 = e.clientX; moved = 0; });
+  window.addEventListener('pointermove', function (e) { if (x0 !== null) moved = Math.max(moved, Math.abs(e.clientX - x0)); });
+  window.addEventListener('pointerup', function (e) {
+    if (x0 === null) return;
+    var dx = e.clientX - x0; x0 = null;
+    if (Math.abs(dx) > 45) go(idx + (dx < 0 ? 1 : -1), true);
+  });
+  phones.forEach(function (li, i) {
+    li.addEventListener('click', function () { if (moved < 8 && li.getAttribute('data-pos') !== '0') go(i, true); });
+  });
+
+  /* parte solo quando il carosello è in vista */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        if (x.isIntersecting && !started) { started = true; setPlaying(true); }
+        if (!x.isIntersecting) { hover = true; } else { hover = false; }
+      });
+    }, { threshold: 0.4 }).observe(document.getElementById('app'));
+  } else { started = true; setPlaying(true); }
+  setPlaying(!reduce, true);
+  render();
+})();
+</script>
 
 </body>
 </html>

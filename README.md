@@ -10,9 +10,9 @@ Si aprono con un doppio clic sul file, in un browser (serve la connessione per i
 
 | Bozza | Idea | File |
 |---|---|---|
-| A, Solare | Il sole e l'onda del logo, caldo e vicino all'app | [`prototypes/stile-a-solare/index.html`](prototypes/stile-a-solare/index.html) |
-| B, Carta nautica | Reticolo, curve di profondità e rotta dei traghetti | [`prototypes/stile-b-carta/index.html`](prototypes/stile-b-carta/index.html) |
-| C, Ora blu | Il porto di Marettimo di sera, foto protagonista | [`prototypes/stile-c-ora-blu/index.html`](prototypes/stile-c-ora-blu/index.html) |
+| A, Solare | Carosello 3D animato delle schermate dell'app, sole e onde del logo | [`prototypes/stile-a-solare/index.html`](prototypes/stile-a-solare/index.html) |
+| B, Carta nautica | Carta interattiva: zoom sulle isole, traghetto e schede d'esempio | [`prototypes/stile-b-carta/index.html`](prototypes/stile-b-carta/index.html) |
+| C, Ora blu | Scrollstory "una giornata a Marettimo" dall'alba alla notte | [`prototypes/stile-c-ora-blu/index.html`](prototypes/stile-c-ora-blu/index.html) |
 
 Le tre bozze hanno gli stessi contenuti e le stesse sezioni (hero, quattro voci dell'app, tre isole, partner, contatti). Il modulo email non è ancora collegato a nessun servizio.
 

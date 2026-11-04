@@ -48,3 +48,7 @@ La foto dell'hero e la schermata dell'app che sale una sola volta al caricamento
 **Pro**: forte impatto emotivo, chiaro e veloce da leggere, il giallo guida l'occhio verso le azioni.
 
 **Contro**: più lontano dal crema solare delle slide, il fondo scuro ha senso solo con foto luminose e di qualità, rischio di sembrare troppo notturno per una vacanza al sole (si può alternare con sezioni chiare).
+
+## Idea interattiva: scrollstory "Una giornata a Marettimo"
+
+Dopo la hero, la pagina si ferma su una scena a schermo intero e racconta la giornata scorrendo: orologio dalle 08:00 alle 22:30, sfondo che passa da porto, grotta, via di sera e porto di notte, colore del cielo che cambia e telefono che mostra la schermata dell'app giusta per ogni momento (home, esperienze, scheda). L'ultimo capitolo porta alla call to action. Con `prefers-reduced-motion` la storia diventa una sequenza statica di capitoli.

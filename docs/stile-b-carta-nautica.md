@@ -47,3 +47,7 @@ La rotta dei traghetti che si disegna una volta sola al caricamento, da Trapani 
 **Pro**: identità forte e legata al luogo, grafica leggera (SVG), valorizza il racconto "come un local".
 
 **Contro**: tono più serioso dell'app, richiede foto belle per non restare troppo schematico, la carta va ridisegnata con cura se si vuole una versione definitiva.
+
+## Idea interattiva: la carta che si avvicina
+
+La carta delle Egadi nella hero è cliccabile. Toccando Favignana, Levanzo o Marettimo (o i pulsanti sotto la carta) la mappa si avvicina all'isola, il traghetto parte da Trapani lungo la rotta tratteggiata e compaiono sull'isola i simboli della legenda con alcune schede d'esempio prese dal mock. A fianco, il cartiglio mostra nome, coordinate, descrizione ed elenco delle schede. Funziona con mouse, tocco e tastiera. Le profondità e le curve sono decorative: la carta è illustrativa e non adatta alla navigazione.
