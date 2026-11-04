@@ -65,7 +65,7 @@ Navbar con selettore lingua, bottone download con badge degli store, mockup tele
 - Sito statico generato con **Astro** e **Tailwind CSS**, pubblicabile su GitHub Pages, Netlify o Cloudflare Pages.
 - Modulo partner collegato a un servizio di form (Formspree, Netlify Forms) o a un piccolo endpoint, con invio email.
 - Internazionalizzazione IT/EN fin dall'inizio.
-- Un prototipo per stile in `prototypes/`, con gli stessi contenuti, per confrontare le tre direzioni a parità di testo.
+- Un prototipo per stile in `prototypes/` (già presenti come bozze della home), con gli stessi contenuti, per confrontare le tre direzioni a parità di testo.
 
 ## Piano di lavoro
 

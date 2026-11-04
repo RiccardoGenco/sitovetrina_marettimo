@@ -6,6 +6,10 @@
 
 **Pubblico principale**: turisti e operatori locali che cercano qualcosa di semplice e rassicurante.
 
+**Bozza**: `prototypes/stile-a-solare/index.html`
+
+**Momento memorabile**: l'hero rilegge il logo. Il sole giallo tramonta dietro due onde, e il telefono con la schermata dell'app emerge dal mare, con un'unica animazione di salita al caricamento.
+
 ## Palette
 
 | Ruolo | Colore | Hex |

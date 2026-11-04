@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel Egadi | Bozza B, Carta nautica</title>
+<meta name="description" content="Travel Egadi raccoglie in un'app strutture, esperienze e ristoranti di Favignana, Levanzo e Marettimo.">
+<link rel="icon" href="../../assets/logo-icona.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #1070B8;
+    --sky: #4AABD5;
+    --sun: #FCE348;
+    --slate: #406890;
+    --ink: #14283C;
+    --paper: #FFFFFF;
+    --gutter: clamp(20px, 5vw, 72px);
+    --serif: "Literata", Georgia, serif;
+    --sans: "Barlow Semi Condensed", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--ink); background-color: var(--paper);
+    font-family: var(--serif); font-size: 18px; line-height: 1.65;
+    /* reticolo della carta: una linea ogni 96px, con tacche */
+    background-image:
+      linear-gradient(to right, rgba(74,171,213,.22) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(74,171,213,.22) 1px, transparent 1px);
+    background-size: 96px 96px;
+  }
+  img, svg { display: block; max-width: 100%; }
+  img { height: auto; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
+  .on-sea :focus-visible { outline-color: var(--sun); }
+
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px var(--gutter); font-family: var(--sans); font-size: 18px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-family: var(--serif); font-weight: 600; font-size: 21px; color: var(--sea); }
+  .brand img { width: 40px; height: 40px; }
+  .top nav { display: flex; gap: clamp(16px, 3vw, 36px); align-items: center; }
+  .top nav a { text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; }
+  .top nav a:hover { border-color: var(--sea); }
+
+  .btn {
+    display: inline-block; font-family: var(--sans); font-weight: 600; font-size: 19px; text-decoration: none; cursor: pointer;
+    padding: 12px 26px; border: 2px solid var(--sea); background: var(--sea); color: #fff; border-radius: 2px;
+    transition: background-color .15s ease, color .15s ease;
+  }
+  .btn:hover { background: #fff; color: var(--sea); }
+  .btn-line { background: transparent; color: var(--sea); }
+  .btn-line:hover { background: var(--sea); color: #fff; }
+  .btn-sun { background: var(--sun); border-color: var(--sun); color: var(--ink); }
+  .btn-sun:hover { background: transparent; color: #fff; border-color: #fff; }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding: clamp(20px, 4vw, 56px) var(--gutter) clamp(48px, 7vw, 96px); }
+  h1 { margin: 0 0 22px; font-weight: 600; font-size: clamp(44px, 6.2vw, 88px); line-height: 1; letter-spacing: -0.02em; color: var(--sea); font-variation-settings: "opsz" 72; }
+  .lead { text-wrap: pretty; margin: 0 0 30px; font-size: clamp(19px, 1.8vw, 23px); line-height: 1.5; max-width: 30ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .note { margin: 16px 0 0; font-family: var(--sans); font-size: 16px; color: var(--slate); }
+
+  .chart { margin: 0; }
+  .chart .frame { background: #fff; border: 2px solid var(--sea); outline: 1px solid var(--sea); outline-offset: 6px; padding: 10px; margin: 8px; }
+  .chart svg { width: 100%; height: auto; }
+  .chart figcaption { margin: 18px 8px 0; font-family: var(--sans); font-size: 15px; color: var(--slate); }
+  .tick { font: 500 12.5px var(--sans); fill: var(--slate); }
+  .water { font: italic 400 14px var(--serif); fill: var(--slate); }
+  .place { font: italic 600 19px var(--serif); fill: var(--ink); }
+  .coord { font: 500 12px var(--sans); fill: var(--slate); letter-spacing: .02em; }
+  .route { stroke-dasharray: 7 6; }
+  .reveal { transform-box: fill-box; transform-origin: 100% 50%; animation: reveal 2.8s .5s cubic-bezier(.4,.1,.3,1) both; }
+  @keyframes reveal { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  /* Sezioni */
+  section { padding: clamp(40px, 6vw, 88px) var(--gutter); }
+  h2 { margin: 0 0 12px; font-weight: 600; font-size: clamp(30px, 4vw, 52px); line-height: 1.08; letter-spacing: -0.015em; color: var(--sea); }
+  .intro { max-width: 46ch; margin: 0 0 40px; }
+
+  .legend { border: 2px solid var(--sea); background: #fff; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .legend > div { padding: 26px 28px; display: grid; grid-template-columns: 34px 1fr; gap: 4px 18px; align-items: start; }
+  .legend > div:nth-child(odd) { border-right: 1px solid var(--sea); }
+  .legend > div:nth-child(-n+2) { border-bottom: 1px solid var(--sea); }
+  .legend svg { width: 34px; height: 34px; margin-top: 4px; }
+  .legend h3 { margin: 0; font-size: 22px; font-weight: 600; line-height: 1.3; }
+  .legend p { margin: 4px 0 0; grid-column: 2; font-size: 17px; line-height: 1.55; }
+
+  .isole { border-top: 1px solid var(--sea); background: #fff; }
+  .isola { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.3fr); gap: 8px 32px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid rgba(16,112,184,.35); }
+  .isola h3 { margin: 0; font-style: italic; font-weight: 600; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; }
+  .isola .c { font-family: var(--sans); font-size: 16px; color: var(--slate); }
+  .isola p { margin: 0; }
+  .photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 48px 0 0; }
+  .photos figure { margin: 0; }
+  .photos img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--sea); }
+  .photos figcaption { margin-top: 8px; font-family: var(--sans); font-size: 15px; color: var(--slate); }
+
+  .partner { background: var(--sea); color: #fff; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px 64px; align-items: center; }
+  .partner h2 { color: #fff; max-width: 14ch; }
+  .partner ul { list-style: none; margin: 0 0 28px; padding: 0; font-size: 20px; }
+  .partner li { padding: 12px 0; border-top: 1px solid rgba(255,255,255,.45); }
+  .partner li:last-child { border-bottom: 1px solid rgba(255,255,255,.45); }
+  .partner small { display: block; margin-top: 16px; font-family: var(--sans); font-size: 17px; }
+
+  footer { padding: 56px var(--gutter) 36px; background: #fff; border-top: 1px solid var(--sea); }
+  footer h2 { max-width: 18ch; }
+  form { display: flex; flex-wrap: wrap; gap: 12px; max-width: 560px; margin-top: 20px; }
+  .field { flex: 1 1 260px; }
+  input[type=email] { width: 100%; font: 400 18px var(--serif); padding: 12px 16px; border: 2px solid var(--sea); border-radius: 2px; background: #fff; color: var(--ink); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .legal { margin: 48px 0 0; font-family: var(--sans); font-size: 15px; color: var(--slate); display: flex; flex-wrap: wrap; gap: 6px 28px; }
+
+  @media (max-width: 900px) {
+    .hero, .partner { grid-template-columns: 1fr; }
+    .legend { grid-template-columns: 1fr; }
+    .legend > div:nth-child(odd) { border-right: 0; }
+    .legend > div:not(:last-child) { border-bottom: 1px solid var(--sea); }
+    .isola { grid-template-columns: 1fr; gap: 2px; }
+    .photos { grid-template-columns: 1fr; }
+    .photos img { aspect-ratio: 16 / 10; }
+    .top nav a:not(.btn) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { animation: none; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#"><img src="../../assets/logo-icona.png" alt="" width="40" height="40">Travel Egadi</a>
+  <nav aria-label="Principale">
+    <a href="#app">L'app</a>
+    <a href="#isole">Le isole</a>
+    <a href="#partner">Per le attività</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="titolo">
+    <div>
+      <h1 id="titolo">Rotta sulle Egadi.</h1>
+      <p class="lead">Dove dormire, cosa fare e dove mangiare a Favignana, Levanzo e Marettimo, con i consigli di chi ci vive.</p>
+      <div class="actions">
+        <a class="btn" href="#contatti">Avvisami al lancio</a>
+        <a class="btn btn-line" href="#partner">Ho un'attività</a>
+      </div>
+      <p class="note">L'app arriva presto su App Store e Google Play.</p>
+    </div>
+
+    <figure class="chart">
+      <div class="frame">
+        <svg viewBox="0 0 640 320" role="img" aria-labelledby="chart-t chart-d">
+          <title id="chart-t">Carta illustrata delle isole Egadi</title>
+          <desc id="chart-d">Marettimo a ovest, Levanzo e Favignana a est, con la rotta dei traghetti da Trapani.</desc>
+          <defs>
+            <path id="mar" d="M92 98 C100 80 128 70 150 82 C166 92 160 112 148 124 C132 138 106 140 94 126 C86 116 88 106 92 98Z"/>
+            <path id="fav" d="M462 168 C470 150 492 150 500 160 C510 148 535 150 546 166 C552 178 540 190 522 192 C512 200 490 202 482 192 C466 192 456 180 462 168Z"/>
+            <path id="lev" d="M498 62 C512 52 536 56 540 66 C542 78 524 90 510 88 C498 84 492 70 498 62Z"/>
+            <clipPath id="rotta-clip"><rect class="reveal" x="0" y="0" width="640" height="320"/></clipPath>
+          </defs>
+
+          <!-- reticolo: meridiani e paralleli -->
+          <g stroke="#4AABD5" stroke-width="1" opacity=".55" fill="none">
+            <path d="M180 0V320M320 0V320M460 0V320"/>
+            <path d="M0 53H640M0 124H640M0 195H640"/>
+          </g>
+          <g class="tick">
+            <text x="184" y="312">12°06′E</text><text x="324" y="312">12°12′E</text><text x="464" y="312">12°18′E</text>
+            <text x="6" y="49">38°00′N</text><text x="6" y="120">37°58′N</text><text x="6" y="191">37°55′N</text>
+          </g>
+
+          <!-- curve di profondità -->
+          <g fill="none" stroke="#4AABD5" stroke-width="1.4" vector-effect="non-scaling-stroke">
+            <g stroke-opacity=".9"><use href="#mar" transform="translate(121 106) scale(1.28) translate(-121 -106)"/><use href="#fav" transform="translate(504 175) scale(1.22) translate(-504 -175)"/><use href="#lev" transform="translate(518 71) scale(1.4) translate(-518 -71)"/></g>
+            <g stroke-opacity=".6"><use href="#mar" transform="translate(121 106) scale(1.7) translate(-121 -106)"/><use href="#fav" transform="translate(504 175) scale(1.55) translate(-504 -175)"/><use href="#lev" transform="translate(518 71) scale(1.9) translate(-518 -71)"/></g>
+            <g stroke-opacity=".35"><use href="#mar" transform="translate(121 106) scale(2.3) translate(-121 -106)"/><use href="#fav" transform="translate(504 175) scale(2) translate(-504 -175)"/></g>
+          </g>
+
+          <!-- scandagli -->
+          <g class="tick" font-style="italic">
+            <text x="230" y="150">112</text><text x="300" y="214">86</text><text x="380" y="110">64</text><text x="60" y="190">140</text><text x="400" y="260">48</text><text x="250" y="60">95</text>
+          </g>
+
+          <!-- costa siciliana -->
+          <path d="M640 188 C620 212 612 250 618 320 H640Z" fill="#FCE348" stroke="#1070B8" stroke-width="1.5"/>
+          <text class="water" x="606" y="262" text-anchor="end">Trapani</text>
+
+          <!-- isole -->
+          <g fill="#FCE348" stroke="#1070B8" stroke-width="2" stroke-linejoin="round">
+            <use href="#mar"/><use href="#fav"/><use href="#lev"/>
+          </g>
+
+          <!-- rotta dei traghetti -->
+          <g clip-path="url(#rotta-clip)">
+            <path class="route" d="M622 226 C 600 218, 580 200, 552 184 S 552 112, 538 88 S 330 72, 158 98" fill="none" stroke="#1070B8" stroke-width="2"/>
+          </g>
+
+          <!-- nomi -->
+          <text class="place" x="96" y="162">Marettimo</text><text class="coord" x="96" y="177">37°58′N 12°04′E</text>
+          <text class="place" x="448" y="226">Favignana</text><text class="coord" x="448" y="241">37°56′N 12°20′E</text>
+          <text class="place" x="436" y="38">Levanzo</text>
+
+          <!-- rosa dei venti -->
+          <g transform="translate(70 252)" stroke="#1070B8" fill="none" stroke-width="1.5">
+            <circle r="26"/><path d="M0 -34V34M-34 0H34" stroke-width="1"/>
+            <path d="M0 -26 L6 0 L0 26 L-6 0Z" fill="#1070B8"/>
+            <text x="-4" y="-40" class="tick" fill="#1070B8" stroke="none" style="fill:#1070B8">N</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Carta illustrativa, non adatta alla navigazione. La linea tratteggiata segue la rotta dei traghetti.</figcaption>
+    </figure>
+  </section>
+
+  <section id="app" aria-labelledby="app-t">
+    <h2 id="app-t">Cosa trovi nell'app</h2>
+    <p class="intro">Le stesse quattro voci che compaiono nel menu dell'app, ognuna con foto, posizione e contatto diretto.</p>
+    <div class="legend">
+      <div>
+        <svg viewBox="0 0 34 34" aria-hidden="true"><rect x="5" y="5" width="24" height="24" fill="#FCE348" stroke="#1070B8" stroke-width="2.5"/></svg>
+        <h3>Dove dormire</h3><p>Hotel, bed and breakfast, case e resort.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4 L30 29 H4Z" fill="#FCE348" stroke="#1070B8" stroke-width="2.5" stroke-linejoin="round"/></svg>
+        <h3>Esperienze</h3><p>Tour in barca, degustazioni, natura e sport.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="12" fill="#FCE348" stroke="#1070B8" stroke-width="2.5"/></svg>
+        <h3>Dove mangiare</h3><p>Ristoranti da cercare in base ai tuoi gusti.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 3 L31 17 L17 31 L3 17Z" fill="#FCE348" stroke="#1070B8" stroke-width="2.5" stroke-linejoin="round"/></svg>
+        <h3>Punti di interesse</h3><p>Calette, chiese e luoghi segnalati dai local, con la mappa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="isole" id="isole" aria-labelledby="isole-t">
+    <h2 id="isole-t">Le tre isole</h2>
+    <div class="isola">
+      <h3>Favignana</h3><span class="c">37°56′N 12°20′E</span><p>Il gioiello delle Egadi, la più grande e la più vicina alla costa.</p>
+    </div>
+    <div class="isola">
+      <h3>Levanzo</h3><span class="c">37°59′N 12°21′E</span><p>La più piccola e tranquilla, con la Grotta del Genovese.</p>
+    </div>
+    <div class="isola">
+      <h3>Marettimo</h3><span class="c">37°58′N 12°04′E</span><p>La più lontana e selvaggia, tra sentieri, grotte e mare profondo.</p>
+    </div>
+    <div class="photos">
+      <figure><img src="../../assets/photos/porto-giorno.jpg" alt="Il porto di Marettimo con le barche ormeggiate" width="1600" height="500"><figcaption>Il porto di Marettimo</figcaption></figure>
+      <figure><img src="../../assets/photos/marettimo-dall-alto.jpg" alt="Il paese di Marettimo visto dal sentiero, sul mare" width="1600" height="1067"><figcaption>Marettimo vista dal sentiero</figcaption></figure>
+      <figure><img src="../../assets/photos/grotta-arco.jpg" alt="Un arco di roccia in una grotta sul mare" width="1600" height="1064"><figcaption>Una grotta vista dal mare</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="partner on-sea" id="partner" aria-labelledby="partner-t">
+    <h2 id="partner-t">Segna la tua attività sulla carta.</h2>
+    <div>
+      <ul>
+        <li>Una scheda con foto e descrizione</li>
+        <li>Contatti diretti con i clienti</li>
+        <li>Statistiche su visualizzazioni e contatti</li>
+      </ul>
+      <a class="btn btn-sun" href="#contatti">Entra come partner</a>
+      <small>L'inserimento è gratuito fino a dicembre 2026.</small>
+    </div>
+  </section>
+</main>
+
+<footer id="contatti">
+  <h2>Scopri quando arriva l'app</h2>
+  <!-- TODO: collegare il modulo a un servizio di invio email -->
+  <form onsubmit="return false">
+    <div class="field">
+      <label class="sr" for="email">La tua email</label>
+      <input id="email" type="email" placeholder="La tua email" autocomplete="email">
+    </div>
+    <button class="btn" type="submit">Avvisami</button>
+  </form>
+  <p class="legal"><span>Travel Egadi, Smart Egadi Islands 4.0</span><span>Favignana, Levanzo, Marettimo</span></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel Egadi | Bozza A, Solare</title>
+<meta name="description" content="Travel Egadi raccoglie in un'app strutture, esperienze e ristoranti di Favignana, Levanzo e Marettimo.">
+<link rel="icon" href="../../assets/logo-icona.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sun: #FCE348;
+    --sea: #1070B8;
+    --sky: #4AABD5;
+    --cream: #FBF3AA;
+    --slate: #406890;
+    --ink: #14283C;
+    --white: #FFFFFF;
+    --gutter: clamp(20px, 5vw, 72px);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Outfit", system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--cream);
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+  .on-sea :focus-visible { outline-color: var(--sun); }
+
+  /* Barra in alto */
+  .top {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 18px var(--gutter);
+    position: relative; z-index: 5;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; font-size: 22px; color: var(--slate); }
+  .brand img { width: 44px; height: 44px; }
+  .top nav { display: flex; align-items: center; gap: clamp(14px, 3vw, 34px); font-weight: 600; font-size: 17px; }
+  .top nav a { text-decoration: none; padding: 6px 2px; }
+  .top nav a.btn { padding: 12px 22px; font-size: 17px; }
+  .top nav a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--sun); text-underline-offset: 6px; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 600; font-size: 18px;
+    padding: 14px 26px; border-radius: 999px; border: 0; cursor: pointer; font-family: inherit;
+    transition: transform .15s ease, background-color .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-sea { background: var(--sea); color: var(--white); }
+  .btn-sea:hover { background: #0C5E9C; }
+  .btn-ink { background: var(--ink); color: var(--white); }
+  .btn-ghost { background: transparent; color: var(--slate); box-shadow: inset 0 0 0 2px var(--slate); }
+
+  /* Hero: il sole che tramonta nel mare, con il telefono che emerge */
+  .hero {
+    position: relative; overflow: hidden;
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: center; gap: 24px;
+    padding: 24px var(--gutter) 0;
+    min-height: min(820px, calc(100svh - 80px));
+  }
+  .hero-text { position: relative; z-index: 3; padding-bottom: 150px; }
+  h1 {
+    margin: 0 0 22px; font-weight: 800; color: var(--slate);
+    font-size: clamp(46px, 7.4vw, 104px); line-height: .96; letter-spacing: -0.035em;
+  }
+  .lead { max-width: 30ch; font-size: clamp(20px, 2.1vw, 26px); line-height: 1.4; margin: 0 0 32px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .soon { margin: 18px 0 0; font-size: 16px; color: var(--slate); }
+
+  .scene { position: relative; align-self: stretch; min-height: 520px; }
+  .sun {
+    position: absolute; right: -4%; top: 6%;
+    width: min(600px, 96%); aspect-ratio: 1; border-radius: 50%; background: var(--sun);
+  }
+  .phone {
+    position: absolute; left: 50%; bottom: 0; transform: translateX(-46%);
+    width: clamp(220px, 26vw, 330px); z-index: 2;
+  }
+  .phone img {
+    width: 100%; border: 9px solid var(--ink); border-bottom: 0; border-radius: 40px 40px 0 0;
+    box-shadow: 0 30px 60px rgba(20, 40, 60, .25);
+    animation: rise 1.1s cubic-bezier(.2,.7,.2,1) both;
+  }
+  @keyframes rise { from { transform: translateY(70px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+  .waves { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(90px, 13vw, 170px); z-index: 4; display: block; }
+
+  /* Il mare: le quattro aree dell'app */
+  .sea { background: var(--sea); color: var(--white); padding: 40px var(--gutter) 120px; }
+  .sea h2, .islands h2, .partner h2 { margin: 0; font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; font-size: clamp(34px, 5vw, 64px); }
+  .sea h2 { max-width: 14ch; }
+  .areas { margin: 56px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(28px, 6vw, 96px); }
+  .areas li { border-top: 2px solid rgba(255,255,255,.4); padding: 24px 0 36px; }
+  .areas h3 { margin: 0 0 8px; font-size: clamp(24px, 2.6vw, 32px); font-weight: 600; display: flex; align-items: center; gap: 14px; }
+  .areas h3::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--sun); flex: none; }
+  .areas p { margin: 0; max-width: 36ch; }
+
+  /* Le isole: il bagnasciuga */
+  .islands { background: var(--white); margin-top: -72px; border-radius: 56px 56px 0 0; padding: 88px var(--gutter) 40px; position: relative; z-index: 2; }
+  .islands h2 { color: var(--slate); max-width: 16ch; }
+  .rows { margin: 48px 0 0; padding: 0; list-style: none; }
+  .rows li {
+    display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: baseline; gap: 12px 40px;
+    padding: 20px 0; border-top: 3px solid var(--sun);
+  }
+  .rows li:last-child { border-bottom: 3px solid var(--sun); }
+  .rows b { font-size: clamp(42px, 8.5vw, 124px); line-height: 1; font-weight: 800; letter-spacing: -0.04em; color: var(--slate); }
+  .rows span { font-size: 19px; max-width: 32ch; }
+  figure { margin: 56px 0 0; }
+  figure img { width: 100%; height: clamp(220px, 38vw, 480px); object-fit: cover; border-radius: 36px; }
+  figcaption { margin-top: 12px; font-size: 16px; color: var(--slate); }
+
+  /* Partner */
+  .partner-wrap { background: var(--white); padding: 56px var(--gutter) 72px; }
+  .partner { background: var(--sun); border-radius: 44px; padding: clamp(32px, 6vw, 80px); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px 64px; align-items: end; }
+  .partner h2 { max-width: 13ch; }
+  .partner ul { margin: 0 0 28px; padding: 0; list-style: none; font-size: 20px; }
+  .partner li { padding: 10px 0; border-top: 2px solid rgba(20,40,60,.25); }
+  .partner p { margin: 22px 0 0; max-width: 34ch; }
+
+  /* Contatti */
+  footer { background: var(--cream); padding: 64px var(--gutter) 40px; }
+  footer h2 { margin: 0 0 20px; font-size: clamp(30px, 4vw, 48px); font-weight: 800; color: var(--slate); letter-spacing: -0.02em; line-height: 1.05; max-width: 18ch; }
+  form { display: flex; flex-wrap: wrap; gap: 12px; max-width: 560px; }
+  .field { flex: 1 1 260px; }
+  input[type=email] {
+    width: 100%; font: inherit; padding: 14px 22px; border-radius: 999px; border: 2px solid var(--slate); background: var(--white); color: var(--ink);
+  }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .legal { margin: 56px 0 0; font-size: 15px; color: var(--slate); display: flex; flex-wrap: wrap; gap: 6px 28px; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-top: 8px; }
+    .hero-text { padding-bottom: 8px; }
+    .scene { min-height: 440px; margin-bottom: 0; }
+    .sun { right: 50%; transform: translateX(50%); top: 0; width: min(420px, 92%); }
+    .phone { transform: translateX(-50%); width: min(250px, 58%); }
+    .areas { grid-template-columns: 1fr; }
+    .rows li, .partner { grid-template-columns: 1fr; }
+    .top nav a:not(.btn) { display: none; }
+    .brand { font-size: 19px; white-space: nowrap; }
+    .brand img { width: 38px; height: 38px; }
+    .top nav a.btn { white-space: nowrap; padding: 10px 16px; font-size: 15px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .phone img { animation: none; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#"><img src="../../assets/logo-icona.png" alt="" width="44" height="44">Travel Egadi</a>
+  <nav aria-label="Principale">
+    <a href="#app">L'app</a>
+    <a href="#isole">Le isole</a>
+    <a href="#partner">Per le attività</a>
+    <a class="btn btn-sea" href="#contatti">Avvisami al lancio</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="titolo">
+    <div class="hero-text">
+      <h1 id="titolo">Le Egadi, tutte in un'app.</h1>
+      <p class="lead">Dove dormire, cosa fare, dove mangiare. Con i consigli di chi vive sulle isole.</p>
+      <div class="actions">
+        <a class="btn btn-sea" href="#contatti">Avvisami al lancio</a>
+        <a class="btn btn-ghost" href="#partner">Ho un'attività</a>
+      </div>
+      <p class="soon">L'app arriva presto su App Store e Google Play.</p>
+    </div>
+    <div class="scene" aria-hidden="true">
+      <div class="sun"></div>
+      <div class="phone"><img src="../../assets/app/home.png" alt="" width="576" height="810"></div>
+    </div>
+    <svg class="waves" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 70 C 200 10, 420 130, 700 70 S 1180 10, 1440 80 V170 H0 Z" fill="#4AABD5"/>
+      <path d="M0 110 C 240 50, 480 160, 760 110 S 1200 60, 1440 120 V170 H0 Z" fill="#1070B8"/>
+    </svg>
+  </section>
+
+  <section class="sea on-sea" id="app" aria-labelledby="aree">
+    <h2 id="aree">Quattro modi di vivere le isole</h2>
+    <ul class="areas">
+      <li>
+        <h3>Dove dormire</h3>
+        <p>Hotel, bed and breakfast, case e resort, con foto, stelle e contatto diretto.</p>
+      </li>
+      <li>
+        <h3>Esperienze</h3>
+        <p>Tour in barca, degustazioni, natura e sport, scelti per isola e per tipo di attività.</p>
+      </li>
+      <li>
+        <h3>Dove mangiare</h3>
+        <p>Ristoranti da cercare in base ai tuoi gusti, con descrizione e posizione sulla mappa.</p>
+      </li>
+      <li>
+        <h3>Punti di interesse</h3>
+        <p>Chiese, calette e luoghi nascosti, raccontati da chi le isole le conosce a memoria.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="islands" id="isole" aria-labelledby="isole-t">
+    <h2 id="isole-t">Tre isole, una sola app</h2>
+    <ul class="rows">
+      <li><b>Favignana</b><span>Il gioiello delle Egadi, la più grande e la più vicina alla costa.</span></li>
+      <li><b>Levanzo</b><span>La più piccola e tranquilla, con la Grotta del Genovese.</span></li>
+      <li><b>Marettimo</b><span>La più lontana e selvaggia, tra sentieri, grotte e mare profondo.</span></li>
+    </ul>
+    <figure>
+      <img src="../../assets/photos/porto-giorno.jpg" alt="Il porto di Marettimo con barche e case bianche sotto la montagna" width="1600" height="500">
+      <figcaption>Il porto di Marettimo.</figcaption>
+    </figure>
+  </section>
+
+  <div class="partner-wrap" id="partner">
+    <section class="partner" aria-labelledby="partner-t">
+      <h2 id="partner-t">Hai un'attività alle Egadi?</h2>
+      <div>
+        <ul>
+          <li>Una scheda con foto e descrizione</li>
+          <li>Contatti diretti con i clienti</li>
+          <li>Statistiche su visualizzazioni e contatti</li>
+        </ul>
+        <a class="btn btn-ink" href="#contatti">Entra come partner</a>
+        <p>L'inserimento è gratuito fino a dicembre 2026.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer id="contatti">
+  <h2>Scopri quando arriva l'app</h2>
+  <!-- TODO: collegare il modulo a un servizio di invio email -->
+  <form onsubmit="return false">
+    <div class="field">
+      <label class="sr" for="email">La tua email</label>
+      <input id="email" type="email" placeholder="La tua email" autocomplete="email">
+    </div>
+    <button class="btn btn-sea" type="submit">Avvisami</button>
+  </form>
+  <p class="legal"><span>Travel Egadi, Smart Egadi Islands 4.0</span><span>Favignana, Levanzo, Marettimo</span></p>
+</footer>
+
+</body>
+</html>
