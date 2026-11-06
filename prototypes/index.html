@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../assets/logo-icona.png">
+<title>Proposte sito Travel Egadi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  /* Impianto: crema soleggiato con blu del logo, un elenco di tre righe con anteprima grande. */
+  :root {
+    --bg: #FFF9D6;
+    --fg: #14283C;
+    --muted: #406890;
+    --line: #E3D98F;
+    --accent: #FCE348;
+    --btn-bg: #1070B8;
+    --btn-fg: #FFFFFF;
+    --shadow: 0 18px 40px rgba(20, 40, 60, .16);
+    --font: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0B2744; --fg: #EAF3FB; --muted: #9CC3E3; --line: #2A4B6E;
+      --btn-bg: #FCE348; --btn-fg: #14283C; --shadow: 0 18px 40px rgba(0, 0, 0, .45);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0B2744; --fg: #EAF3FB; --muted: #9CC3E3; --line: #2A4B6E;
+    --btn-bg: #FCE348; --btn-fg: #14283C; --shadow: 0 18px 40px rgba(0, 0, 0, .45);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: var(--font); font-size: 18px; line-height: 1.55;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 28px 56px;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  header { display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 6vw, 64px); }
+  header img { width: 48px; height: 48px; flex: none; }
+  header b { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+  h1 { margin: 0 0 14px; font-size: clamp(36px, 6.4vw, 76px); line-height: 1; font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; max-width: 16ch; }
+  .intro { margin: 0; max-width: 46ch; font-size: clamp(18px, 2vw, 22px); color: var(--muted); }
+
+  ol { list-style: none; margin: clamp(32px, 6vw, 64px) 0 0; padding: 0; }
+  li { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px clamp(24px, 5vw, 64px); align-items: center; padding: clamp(24px, 4vw, 44px) 0; border-top: 2px solid var(--line); }
+  li:last-child { border-bottom: 2px solid var(--line); }
+  .shot { display: block; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); line-height: 0; }
+  .shot img { width: 100%; height: auto; display: block; transition: transform .35s ease; }
+  .shot:hover img { transform: scale(1.025); }
+  h2 { margin: 0 0 8px; font-size: clamp(30px, 3.6vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+  .txt p { margin: 0 0 22px; max-width: 34ch; }
+  .btn { display: inline-block; padding: 14px 26px; border-radius: 999px; background: var(--btn-bg); color: var(--btn-fg); font: 600 18px/1 var(--font); text-decoration: none; transition: transform .15s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  a:focus-visible { outline: 3px solid var(--fg); outline-offset: 4px; border-radius: 14px; }
+  .btn:focus-visible { border-radius: 999px; }
+  .note { margin: 28px 0 0; font-size: 15px; color: var(--muted); max-width: 70ch; }
+
+  @media (max-width: 800px) { li { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .shot img, .btn { transition: none; } }
+</style>
+
+<body>
+<div class="wrap">
+  <header>
+    <img src="../assets/logo-icona.png" alt="" width="48" height="48">
+    <b>Travel Egadi</b>
+  </header>
+
+  <h1>Tre proposte per il sito vetrina</h1>
+  <p class="intro">Stessi contenuti, tre modi di raccontare le Egadi. Ogni proposta ha un'idea interattiva diversa: apri e prova a scorrere, cliccare e sfogliare. In basso trovi il selettore per passare dall'una all'altra.</p>
+
+  <ol>
+    <li>
+      <a class="shot" href="stile-a-solare/index.html" aria-label="Apri la proposta A, Solare"><img src="../anteprime/a.jpg" alt="Anteprima della proposta A: carosello 3D con tre schermate dell'app davanti al sole giallo e alle onde" width="1000" height="625"></a>
+      <div class="txt">
+        <h2>A, Solare</h2>
+        <p>Un carosello 3D animato sfoglia le schermate dell'app, con il sole e le onde del logo che si muovono a ogni passaggio. Calda e vicina allo stile dell'app.</p>
+        <a class="btn" href="stile-a-solare/index.html">Apri la proposta</a>
+      </div>
+    </li>
+    <li>
+      <a class="shot" href="stile-b-carta/index.html" aria-label="Apri la proposta B, Carta nautica"><img src="../anteprime/b.jpg" alt="Anteprima della proposta B: carta nautica avvicinata su Levanzo con il traghetto e le schede dell'app" width="1000" height="625"></a>
+      <div class="txt">
+        <h2>B, Carta nautica</h2>
+        <p>Una carta delle Egadi da esplorare: tocca un'isola, la carta si avvicina, il traghetto parte da Trapani e compaiono le schede dell'app. Precisa e legata al territorio.</p>
+        <a class="btn" href="stile-b-carta/index.html">Apri la proposta</a>
+      </div>
+    </li>
+    <li>
+      <a class="shot" href="stile-c-ora-blu/index.html" aria-label="Apri la proposta C, Ora blu"><img src="../anteprime/c.jpg" alt="Anteprima della proposta C: scrollstory con orologio, foto della sera a Marettimo e schermata dell'app" width="1000" height="625"></a>
+      <div class="txt">
+        <h2>C, Ora blu</h2>
+        <p>Una giornata a Marettimo che si racconta scorrendo: l'orologio corre dall'alba alla notte, le foto cambiano e l'app mostra la schermata giusta. Emotiva e fotografica.</p>
+        <a class="btn" href="stile-c-ora-blu/index.html">Apri la proposta</a>
+      </div>
+    </li>
+  </ol>
+
+  <p class="note">Bozze di lavoro. Foto, logo e schermate sono provvisori e il modulo email è dimostrativo.</p>
+</div>
+</body>
+</html>
