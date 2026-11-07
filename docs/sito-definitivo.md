@@ -24,19 +24,24 @@ Convincere i titolari di attività alle Egadi (soprattutto B&B e strutture ricet
 
 - HTML, CSS e JavaScript in un solo file, senza framework, pubblicabile su GitHub Pages.
 - Font Outfit in locale (`assets/fonts/`, licenza OFL), senza chiamate a Google Fonts.
-- Foto e schermate in WebP (`assets/photos/web/`, `assets/app/web/`), con due misure per le foto dello scrollstory. Peso totale della pagina circa 1,8 MB su desktop e 1,1 MB su mobile. Gli originali restano in `assets/photos/` e `assets/app/` perché li usano le bozze.
+- Foto in WebP (`assets/photos/web/`), con due misure per le foto dello scrollstory. Gli originali restano in `assets/photos/` e `assets/app/` perché li usano le bozze.
+- Le schermate dell'app nel telefono sono un mock disegnato in HTML e CSS (home, esperienze, scheda), con le foto di Marettimo e nomi generici. Sono illustrative e scalano con il telefono. Si sostituiscono con gli screenshot ufficiali quando l'app esiste.
+- Barra fissa su mobile con "Aderisci al progetto" (e "WhatsApp" se il numero è compilato): compare dopo lo scrollstory e sparisce sul modulo.
+- Anteprima social `assets/og.jpg` (1200x630), favicon, `robots.txt` e `sitemap.xml`. Gli indirizzi assoluti puntano a riccardogenco.github.io: vanno cambiati se il sito avrà un dominio proprio (`og:image` in `index.html`, `sitemap.xml`, `robots.txt`).
 - Con `prefers-reduced-motion` o senza JavaScript lo scrollstory diventa una sequenza di cinque capitoli con foto.
 - Il modulo ha un campo trappola contro i robot e controlla i campi obbligatori e il consenso prima dell'invio.
 
 ## Da fare prima della pubblicazione
 
-Le impostazioni stanno in `CONFIG`, all'inizio dello script in fondo a `index.html`.
+Tutte le impostazioni stanno in `config.js`, nella radice della repo. Basta compilare i campi e salvare.
 
-| Cosa | Dove | Note |
+| Cosa | Campo in `config.js` | Note |
 |---|---|---|
-| Servizio che riceve il modulo | `CONFIG.formEndpoint` | Per esempio Formspree o Netlify Forms. Finché è vuoto, il modulo mostra un avviso e non invia nulla. |
-| Email e WhatsApp di contatto | `CONFIG.contactEmail`, `CONFIG.whatsapp` | Facoltativi. Se compilati compaiono due pulsanti accanto al modulo. |
-| Informativa privacy e cookie | commento TODO nel footer | Il modulo raccoglie dati personali, serve la pagina. |
+| Servizio che riceve il modulo | `formEndpoint` | Per esempio Formspree. Finché è vuoto il modulo avvisa che non è attivo e non invia nulla. |
+| Email e WhatsApp di contatto | `contactEmail`, `whatsapp` | Facoltativi. Se compilati compaiono i pulsanti accanto al modulo, e WhatsApp anche nella barra fissa su mobile. |
+| Dati dell'informativa privacy | `titolare`, `sedeTitolare`, `emailPrivacy`, `fornitoreModulo`, `dataAggiornamento` | `privacy.html` mostra un segnaposto giallo finché un campo è vuoto. |
+
+L'informativa è un testo di partenza (GDPR, nessun cookie, nessuno strumento di statistica). Va fatta rivedere da chi cura gli aspetti legali del cliente, in particolare i tempi di conservazione (proposti: 12 mesi se non si dà seguito) e il fornitore del modulo. Se in futuro si aggiungono statistiche o cookie, va aggiornata e può servire un avviso di consenso.
 
 ## Punti aperti
 

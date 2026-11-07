@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informativa privacy | Travel Egadi</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1070B8">
+<link rel="icon" href="assets/logo-icona.png">
+<link rel="preload" href="assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script src="config.js"></script>
+<style>
+  @font-face { font-family: "Outfit"; src: url("assets/fonts/outfit-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+  :root { --sea: #1070B8; --slate: #406890; --ink: #14283C; --cream: #FBF3AA; --paper: #FFF9D6; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Outfit", system-ui, sans-serif; font-size: 18px; line-height: 1.65; color: var(--ink); background: var(--cream); }
+  header, main, footer { width: min(760px, 100% - 40px); margin: 0 auto; }
+  header { padding: 28px 0 8px; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; color: var(--slate); text-decoration: none; }
+  .brand img { width: 44px; height: 44px; border-radius: 10px; }
+  main { background: #fff; border-radius: 28px; padding: clamp(24px, 5vw, 52px); margin-top: 18px; }
+  h1 { margin: 0 0 6px; font-size: clamp(32px, 5vw, 46px); line-height: 1.05; letter-spacing: -.03em; color: var(--slate); }
+  h2 { margin: 34px 0 6px; font-size: 22px; letter-spacing: -.01em; color: var(--slate); }
+  p, li { margin: 8px 0; }
+  ul { padding-left: 22px; }
+  .meta { color: var(--slate); font-size: 16px; margin: 0 0 18px; }
+  a { color: var(--sea); }
+  .todo { background: #FCE348; color: var(--ink); padding: 0 6px; border-radius: 6px; font-weight: 600; }
+  footer { padding: 26px 0 48px; font-size: 16px; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<header><a class="brand" href="./"><img src="assets/logo-icona.png" alt="" width="44" height="44">Travel Egadi</a></header>
+<main>
+  <h1>Informativa privacy</h1>
+  <p class="meta">Ultimo aggiornamento: <span data-k="dataAggiornamento"></span></p>
+  <p>Questa pagina spiega quali dati personali raccoglie il sito di Travel Egadi, perché e come li trattiamo, ai sensi del Regolamento UE 2016/679 (GDPR).</p>
+
+  <h2>Titolare del trattamento</h2>
+  <p><span data-k="titolare"></span>, <span data-k="sedeTitolare"></span>.<br>Per qualsiasi richiesta sui tuoi dati: <span data-k="emailPrivacy" data-mail></span>.</p>
+
+  <h2>Quali dati raccogliamo</h2>
+  <p>Solo quelli che inserisci nel modulo del sito: nome dell'attività, tipologia, isola, il tuo nome, telefono o WhatsApp, email, il messaggio facoltativo e il tipo di richiesta (adesione o informazioni).</p>
+
+  <h2>Perché li usiamo e su quale base</h2>
+  <ul>
+    <li>Rispondere alla tua richiesta di informazioni e ricontattarti. Base giuridica: il tuo consenso (art. 6, par. 1, lett. a) e le misure precontrattuali che chiedi (lett. b).</li>
+    <li>Gestire l'adesione al progetto, se scegli di aderire. Base giuridica: esecuzione di misure precontrattuali e del contratto (art. 6, par. 1, lett. b).</li>
+  </ul>
+  <p>Non usiamo i dati per pubblicità né per decisioni automatizzate, e non li vendiamo.</p>
+
+  <h2>Per quanto tempo li conserviamo</h2>
+  <p>Per il tempo necessario a rispondere e, se aderisci, per la durata del rapporto e i termini di legge. Se non si dà seguito alla richiesta, i dati vengono cancellati entro 12 mesi.</p>
+
+  <h2>Chi li riceve</h2>
+  <p>I dati sono visti solo da chi gestisce il progetto Travel Egadi. Il modulo è inviato tramite <span data-k="fornitoreModulo"></span>, che li tratta per nostro conto come fornitore del servizio. Il sito è ospitato su GitHub Pages: come ogni servizio di hosting, può registrare per motivi tecnici l'indirizzo IP di chi visita le pagine. Alcuni fornitori possono trattare i dati fuori dallo Spazio economico europeo, con le garanzie previste dal GDPR (per esempio le clausole contrattuali standard).</p>
+
+  <h2>Cookie</h2>
+  <p>Il sito non usa cookie né strumenti di tracciamento o di statistica. I font sono caricati dal sito stesso, senza servizi esterni.</p>
+
+  <h2>I tuoi diritti</h2>
+  <p>Puoi chiedere accesso ai dati, rettifica, cancellazione, limitazione, portabilità, e opporti al trattamento. Puoi revocare il consenso in ogni momento, senza effetti sul trattamento già avvenuto. Scrivi a <span data-k="emailPrivacy" data-mail></span>. Se ritieni che i tuoi dati siano trattati in modo non corretto, puoi presentare reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" rel="noopener">garanteprivacy.it</a>).</p>
+</main>
+<footer><a href="./">Torna al sito</a></footer>
+<script>
+  var C = window.TE_CONFIG || {};
+  Array.prototype.forEach.call(document.querySelectorAll('[data-k]'), function (el) {
+    var v = (C[el.getAttribute('data-k')] || '').trim();
+    if (!v) { el.textContent = '[da compilare in config.js]'; el.className = 'todo'; return; }
+    if (el.hasAttribute('data-mail')) { var a = document.createElement('a'); a.href = 'mailto:' + v; a.textContent = v; el.replaceWith(a); }
+    else el.textContent = v;
+  });
+</script>
+</body>
+</html>

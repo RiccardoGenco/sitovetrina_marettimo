@@ -35,14 +35,13 @@ Le tre bozze hanno gli stessi contenuti e le stesse sezioni (hero, quattro voci 
 In `assets/` ci sono materiali ricavati dalla cartella di progetto, da sostituire con le versioni definitive:
 
 - `logo-icona.png`: ritaglio del logo dalle slide, serve il file originale in SVG.
-- `app/`: quattro schermate del mock ritagliate dalle slide.
+- `app/`: quattro schermate del mock ritagliate dalle slide (le usano solo le bozze: il sito definitivo ha un mock in HTML).
 - `photos/`: sette foto di Marettimo. I diritti d'uso vanno verificati prima della pubblicazione.
-- `app/web/` e `photos/web/`: versioni WebP ottimizzate usate dal sito definitivo.
+- `photos/web/`: versioni WebP ottimizzate usate dal sito definitivo.
 - `fonts/`: font Outfit in locale (licenza OFL).
 
 ## Prossimi passi
 
-1. Collegare il modulo a un servizio di invio e inserire i contatti diretti (vedi `CONFIG` in `index.html`).
-2. Aggiungere informativa privacy e cookie.
-3. Confermare il testo dell'offerta di lancio e la frase sul team.
-4. Raccogliere logo SVG, screenshot ufficiali e foto con licenza, anche di Favignana e Levanzo.
+1. Compilare `config.js`: servizio del modulo, contatti e dati dell'informativa privacy.
+2. Far rivedere `privacy.html`.
+3. Raccogliere logo SVG, screenshot ufficiali e foto con licenza e senza sovraimpressioni, anche di Favignana e Levanzo.

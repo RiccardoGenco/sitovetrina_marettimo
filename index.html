@@ -10,8 +10,14 @@
 <meta property="og:description" content="Zero commissioni, contatto diretto con i turisti e visibilità totale: quota di lancio di 79,99 € all'anno per chi sale a bordo adesso.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
-<link rel="icon" href="assets/logo-icona.png">
+<meta property="og:image" content="https://riccardogenco.github.io/sitovetrina_marettimo/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script src="config.js"></script>
 <script>
   /* Lo scrollstory si anima solo con JavaScript attivo e senza richiesta di movimento ridotto.
      In tutti gli altri casi la giornata resta una sequenza di capitoli con foto. */
@@ -78,7 +84,7 @@
   .scene { position: relative; align-self: stretch; min-height: 520px; }
   .sun { position: absolute; right: -4%; top: 6%; width: min(600px, 96%); aspect-ratio: 1; border-radius: 50%; background: var(--sun); }
   .phone { position: absolute; left: 50%; bottom: 0; transform: translateX(-46%); width: clamp(220px, 26vw, 330px); z-index: 2; }
-  .phone img { width: 100%; border: 9px solid var(--ink); border-bottom: 0; border-radius: 40px 40px 0 0; box-shadow: 0 30px 60px rgba(20, 40, 60, .25); animation: rise 1.1s var(--ease) both; }
+  .phone-frame { position: relative; width: 100%; aspect-ratio: 576 / 810; border: 9px solid var(--ink); border-bottom: 0; border-radius: 40px 40px 0 0; overflow: hidden; background: #fff; box-shadow: 0 30px 60px rgba(20, 40, 60, .25); animation: rise 1.1s var(--ease) both; }
   @keyframes rise { from { transform: translateY(70px); opacity: 0; } to { transform: none; opacity: 1; } }
   .waves { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(90px, 13vw, 170px); z-index: 4; display: block; }
 
@@ -130,8 +136,54 @@
 
   .anim .ph { display: block; position: absolute; z-index: 3; right: calc(var(--gutter) + clamp(0px, 4vw, 70px)); top: 50%; transform: translateY(-50%); width: clamp(220px, 22vw, 330px); aspect-ratio: 462 / 954; }
   .screen { position: relative; width: 100%; height: 100%; border: 9px solid #0B1A2B; border-radius: 42px; overflow: hidden; background: #0B1A2B; box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08); }
-  .screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; will-change: opacity, transform; }
-  .screen img:first-child { opacity: 1; }
+
+  /* Mock dell'app (illustrativo): schermate in HTML e CSS, scalano con la larghezza del telefono */
+  .app-screen { position: absolute; inset: 0; overflow: hidden; background: #fff; color: var(--ink); container-type: inline-size; font-size: 4cqw; line-height: 1.25; text-align: left; }
+  .screen .app-screen { opacity: 0; will-change: opacity, transform; }
+  .screen .app-screen:first-child { opacity: 1; }
+  .app-screen * { margin: 0; box-sizing: border-box; }
+  .app-screen img { display: block; width: 100%; height: 100%; object-fit: cover; max-width: none; }
+  .app-screen svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .a-status { display: flex; justify-content: space-between; align-items: center; padding: 2.6cqw 6cqw 0; font-size: 3.4cqw; font-weight: 700; }
+  .a-status i { width: 11cqw; height: 3cqw; border-radius: 2cqw; background: var(--ink); opacity: .85; }
+  .a-top { display: flex; align-items: center; gap: 2.4cqw; padding: 3cqw 6cqw 0; font-weight: 800; font-size: 4.6cqw; color: var(--slate); }
+  .a-top img { width: 7.5cqw; height: 7.5cqw; border-radius: 2cqw; }
+  .a-hello { padding: 3.6cqw 6cqw 0; font-size: 7.4cqw; font-weight: 800; letter-spacing: -.02em; line-height: 1.08; color: var(--ink); }
+  .a-search { display: flex; align-items: center; gap: 3cqw; margin: 3.6cqw 6cqw 0; padding: 3cqw 4cqw; border-radius: 6cqw; background: #fff; box-shadow: 0 1.2cqw 5cqw rgba(20, 40, 60, .16), 0 0 0 .3cqw rgba(20, 40, 60, .08); font-size: 5cqw; color: var(--slate); }
+  .a-search span { display: grid; gap: .4cqw; }
+  .a-search b { font-size: 4.2cqw; color: var(--ink); }
+  .a-search small { font-size: 3.2cqw; color: var(--slate); }
+  .a-cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5cqw; margin: 4.6cqw 0 0; padding: 3.4cqw 4cqw; background: var(--sea); color: #fff; }
+  .a-cats span { display: grid; justify-items: center; gap: 1.2cqw; font-size: 3cqw; font-weight: 600; text-align: center; }
+  .a-cats svg { font-size: 6cqw; }
+  .a-h { padding: 5cqw 6cqw 0; font-size: 5.2cqw; font-weight: 800; letter-spacing: -.01em; }
+  .a-card { margin: 3cqw 6cqw 0; border-radius: 4cqw; overflow: hidden; background: #fff; box-shadow: 0 .8cqw 4cqw rgba(20, 40, 60, .14), 0 0 0 .3cqw rgba(20, 40, 60, .06); }
+  .a-card .ph-img { height: 30cqw; background: var(--sky); }
+  .a-card div.t { padding: 2.6cqw 3.4cqw 3.2cqw; display: grid; gap: .8cqw; }
+  .a-card b { font-size: 4.2cqw; }
+  .a-card small { font-size: 3.2cqw; color: var(--slate); }
+  .a-stars { font-size: 3.4cqw; color: #F2B705; letter-spacing: .3cqw; }
+  .a-title { padding: 3.4cqw 6cqw 0; font-size: 7cqw; font-weight: 800; letter-spacing: -.02em; }
+  .a-chips { display: flex; gap: 2cqw; padding: 3cqw 6cqw 0; font-size: 3.3cqw; font-weight: 600; }
+  .a-chips span { padding: 1.6cqw 3.4cqw; border-radius: 5cqw; background: #EEF5FB; color: var(--slate); }
+  .a-chips span.on { background: var(--sea); color: #fff; }
+  .a-row { display: grid; grid-template-columns: 24cqw 1fr; gap: 3.4cqw; align-items: center; margin: 3.4cqw 6cqw 0; }
+  .a-row .ph-img { height: 24cqw; border-radius: 3.6cqw; overflow: hidden; background: var(--sky); }
+  .a-row div.t { display: grid; gap: .9cqw; }
+  .a-row b { font-size: 4.2cqw; line-height: 1.15; }
+  .a-row small { font-size: 3.2cqw; color: var(--slate); }
+  .a-hero { position: relative; height: 54cqw; margin-top: 1.4cqw; background: var(--sky); }
+  .a-back { position: absolute; left: 5cqw; top: 4cqw; width: 8.5cqw; height: 8.5cqw; border-radius: 50%; background: rgba(255, 255, 255, .92); display: grid; place-items: center; font-size: 4.6cqw; }
+  .a-loc { padding: .8cqw 6cqw 0; display: flex; align-items: center; gap: 1.4cqw; font-size: 3.6cqw; color: var(--slate); }
+  .a-text { padding: 3.4cqw 6cqw 0; font-size: 3.6cqw; line-height: 1.42; color: #2b3f54; }
+  .a-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 2.6cqw; padding: 4.4cqw 6cqw 0; }
+  .a-cta span { display: flex; align-items: center; justify-content: center; gap: 2cqw; padding: 3.2cqw; border-radius: 6cqw; font-size: 4cqw; font-weight: 700; background: var(--sea); color: #fff; }
+  .a-cta span.alt { background: #fff; color: var(--sea); box-shadow: inset 0 0 0 .5cqw var(--sea); }
+  .a-cta svg { font-size: 4.6cqw; }
+  .a-info { display: grid; grid-template-columns: 14cqw 1fr; gap: 2cqw; padding: 2.2cqw 6cqw 0; font-size: 3.5cqw; color: #2b3f54; }
+  .a-info b { color: var(--slate); }
+  .a-map { position: relative; height: 34cqw; margin: 4cqw 6cqw 0; border-radius: 4cqw; overflow: hidden; display: grid; place-items: center; color: #D93B3B; font-size: 8cqw; background: linear-gradient(115deg, #CFE6F4 0 38%, #EAF1E4 38% 100%); box-shadow: 0 0 0 .3cqw rgba(20, 40, 60, .1); }
+  .a-map::before { content: ""; position: absolute; left: 12%; right: -10%; top: 62%; height: 1.4cqw; background: #fff; transform: rotate(-12deg); box-shadow: 0 -9cqw 0 #fff, 0 7cqw 0 #fff; }
 
   .anim .ticks { display: grid; position: absolute; z-index: 4; left: calc(var(--gutter) / 2 - 7px); top: 50%; transform: translateY(-50%); margin: 0; padding: 0; list-style: none; gap: 18px; }
   .ticks li { width: 10px; height: 10px; border-radius: 50%; border: 2px solid rgba(255,255,255,.7); transition: background-color .3s ease, transform .3s ease; }
@@ -249,6 +301,15 @@
     .why { border-radius: 36px 36px 0 0; padding-top: 64px; }
     .join { border-radius: 32px; }
   }
+  .dock { display: none; }
+  @media (max-width: 900px) {
+    .dock { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(251, 243, 170, .96); box-shadow: 0 -6px 24px rgba(20, 40, 60, .16); transform: translateY(110%); transition: transform .3s var(--ease); }
+    .dock.show { transform: none; }
+    .dock .btn { flex: 1; justify-content: center; text-align: center; padding: 13px 14px; font-size: 16px; }
+    .dock .btn[hidden] { display: none; }
+    .btn-wa { background: #1FA855; color: #fff; }
+    footer { padding-bottom: 96px; }
+  }
   @media (max-width: 600px) {
     .cards { grid-template-columns: 1fr; }
     .grid { grid-template-columns: 1fr; }
@@ -256,7 +317,7 @@
   @media (max-height: 560px) and (min-width: 901px) { .clock b { font-size: 64px; } .anim .chap h2 { font-size: 40px; } }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .phone img, .hint i::after { animation: none; }
+    .phone-frame, .hint i::after { animation: none; }
     .btn, .mode span { transition: none !important; }
   }
 </style>
@@ -286,7 +347,16 @@
     </div>
     <div class="scene" aria-hidden="true">
       <div class="sun"></div>
-      <div class="phone"><img src="assets/app/web/home.webp" alt="" width="576" height="810"></div>
+      <div class="phone"><div class="phone-frame"><div class="app-screen">
+          <div class="a-status"><span>9:41</span><i></i></div>
+          <div class="a-top"><img src="assets/logo-icona.png" alt="" width="64" height="64">Travel Egadi</div>
+          <p class="a-hello">Dove vuoi andare?</p>
+          <div class="a-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span><b>Cerca</b><small>Dove · Date · Ospiti</small></span></div>
+          <div class="a-cats"><span><svg viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.6"/></svg>Dormire</span><span><svg viewBox="0 0 24 24"><path d="M12 3v11M12 4l6 9h-6M3 17l2 3h14l2-3z"/></svg>Esperienze</span><span><svg viewBox="0 0 24 24"><path d="M7 3v8M4 3v5a3 3 0 0 0 6 0V3M7 11v10M17 3c-2 2-3 5-3 8h3v10"/></svg>Mangiare</span><span><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Mappa</span></div>
+          <p class="a-h">In evidenza</p>
+          <div class="a-card"><div class="ph-img"><img src="assets/photos/web/porto-giorno-900.webp" alt="" loading="lazy" decoding="async"></div><div class="t"><b>Camera con terrazza</b><small>Marettimo · Bed and breakfast</small><span class="a-stars">★★★★★</span></div></div>
+          <div class="a-card"><div class="ph-img"><img src="assets/photos/web/marettimo-dall-alto-900.webp" alt="" loading="lazy" decoding="async"></div><div class="t"><b>Appartamento sul porto</b><small>Marettimo · Casa vacanze</small><span class="a-stars">★★★★★</span></div></div>
+        </div></div></div>
     </div>
     <svg class="waves" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0 70 C 200 10, 420 130, 700 70 S 1180 10, 1440 80 V170 H0 Z" fill="#4AABD5"/>
@@ -350,10 +420,42 @@
 
       <div class="ph" aria-hidden="true">
         <div class="screen" id="screen">
-          <img src="assets/app/web/home-completa.webp" alt="" width="576" height="1189">
-          <img src="assets/app/web/esperienze.webp" alt="" width="462" height="964">
-          <img src="assets/app/web/scheda.webp" alt="" width="460" height="944">
+        <div class="app-screen">
+          <div class="a-status"><span>9:41</span><i></i></div>
+          <div class="a-top"><img src="assets/logo-icona.png" alt="" width="64" height="64">Travel Egadi</div>
+          <p class="a-hello">Dove vuoi andare?</p>
+          <div class="a-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span><b>Cerca</b><small>Dove · Date · Ospiti</small></span></div>
+          <div class="a-cats"><span><svg viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.6"/></svg>Dormire</span><span><svg viewBox="0 0 24 24"><path d="M12 3v11M12 4l6 9h-6M3 17l2 3h14l2-3z"/></svg>Esperienze</span><span><svg viewBox="0 0 24 24"><path d="M7 3v8M4 3v5a3 3 0 0 0 6 0V3M7 11v10M17 3c-2 2-3 5-3 8h3v10"/></svg>Mangiare</span><span><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Mappa</span></div>
+          <p class="a-h">In evidenza</p>
+          <div class="a-card"><div class="ph-img"><img src="assets/photos/web/porto-giorno-900.webp" alt="" loading="lazy" decoding="async"></div><div class="t"><b>Camera con terrazza</b><small>Marettimo · Bed and breakfast</small><span class="a-stars">★★★★★</span></div></div>
+          <div class="a-card"><div class="ph-img"><img src="assets/photos/web/marettimo-dall-alto-900.webp" alt="" loading="lazy" decoding="async"></div><div class="t"><b>Appartamento sul porto</b><small>Marettimo · Casa vacanze</small><span class="a-stars">★★★★★</span></div></div>
         </div>
+        <div class="app-screen">
+          <div class="a-status"><span>9:41</span><i></i></div>
+          <div class="a-top"><img src="assets/logo-icona.png" alt="" width="64" height="64">Travel Egadi</div>
+          <p class="a-hello">Esperienze</p>
+          <div class="a-chips"><span class="on">Tutte</span><span>In barca</span><span>A piedi</span><span>Mare</span></div>
+          <div class="a-row"><div class="ph-img"><img src="assets/photos/web/arco-faraglione-900.webp" alt="" loading="lazy" decoding="async"></div><div class="t"><b>Giro dell'isola in barca</b><small>Mezza giornata · Marettimo</small><span class="a-stars">★★★★★</span></div></div>
+          <div class="a-row"><div class="ph-img"><img src="assets/photos/web/grotta-azzurra-900.webp" alt="" loading="lazy" decoding="async"></div><div class="t"><b>Le grotte dal mare</b><small>2 ore · Marettimo</small><span class="a-stars">★★★★★</span></div></div>
+          <div class="a-row"><div class="ph-img"><img src="assets/photos/web/marettimo-dall-alto-900.webp" alt="" loading="lazy" decoding="async"></div><div class="t"><b>Escursione panoramica</b><small>Mezza giornata · A piedi</small><span class="a-stars">★★★★★</span></div></div>
+          <div class="a-row"><div class="ph-img"><img src="assets/photos/web/porto-sera-900.webp" alt="" loading="lazy" decoding="async"></div><div class="t"><b>Aperitivo al tramonto</b><small>1 ora · Sul porto</small><span class="a-stars">★★★★★</span></div></div>
+          <div class="a-row"><div class="ph-img"><img src="assets/photos/web/grotta-arco-900.webp" alt="" loading="lazy" decoding="async"></div><div class="t"><b>Snorkeling in baia</b><small>2 ore · Mare</small><span class="a-stars">★★★★★</span></div></div>
+          <div class="a-row"><div class="ph-img"><img src="assets/photos/web/porto-giorno-900.webp" alt="" loading="lazy" decoding="async"></div><div class="t"><b>Giro in barca a vela</b><small>Giornata intera · In barca</small><span class="a-stars">★★★★★</span></div></div>
+        </div>
+        <div class="app-screen">
+          <div class="a-status"><span>9:41</span><i></i></div>
+          <div class="a-hero"><img src="assets/photos/web/porto-sera-900.webp" alt="" loading="lazy" decoding="async"><span class="a-back"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></span></div>
+          <p class="a-title">Cena di pesce sul porto</p>
+          <p class="a-loc"><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Marettimo · Ristorante <span class="a-stars">★★★★★</span></p>
+          <div class="a-chips"><span class="on">Menù</span><span>Foto</span><span>Dove siamo</span></div>
+          <p class="a-text">Cucina di mare con il pescato del giorno, terrazza vista porto e tavoli all'aperto. Prenota per la sera o scrivici per sapere i piatti del giorno.</p>
+          <div class="a-cta"><span><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>Chiama</span><span class="alt"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg>Scrivi</span></div>
+          <p class="a-h">Informazioni</p>
+          <p class="a-info"><b>Orari</b><span>19:00 – 23:00, tutti i giorni</span></p>
+          <p class="a-info"><b>Dove</b><span>Sul porto, Marettimo</span></p>
+          <div class="a-map"><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        </div>
+      </div>
       </div>
 
       <ol class="ticks" id="ticks" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ol>
@@ -430,7 +532,7 @@
       <div class="txt">
         <h2 id="aderisci-t">Aderisci al progetto</h2>
         <p>Compila il modulo: ti ricontattiamo per preparare insieme la scheda della tua attività. Se vuoi prima capire meglio, scegli «Voglio informazioni».</p>
-        <p class="offer">Zero commissioni, solo una quota di lancio di 79,99 € all'anno per avere visibilità totale. Un'offerta speciale riservata solo a chi sale a bordo adesso.</p>
+        <p class="offer">Zero commissioni, solo una quota di lancio di 79,99 € all'anno, meno di 22 centesimi al giorno, per avere visibilità totale. Un'offerta speciale riservata solo a chi sale a bordo adesso.</p>
         <p class="who-behind">Il team di Travel Egadi è guidato da Concetta Spataro, esperta del settore turistico con anni di esperienza nell'accoglienza e nell'organizzazione di tour.</p>
         <div class="direct" id="direct" aria-label="Contatti diretti"></div>
       </div>
@@ -490,7 +592,7 @@
             <div class="hp" aria-hidden="true"><label>Lascia vuoto questo campo <input type="text" name="sito" tabindex="-1" autocomplete="off"></label></div>
             <div class="f full consent">
               <input id="consenso" name="consenso" type="checkbox" required>
-              <label for="consenso" style="margin:0;font-weight:400;color:var(--ink)">Acconsento al trattamento dei miei dati per essere ricontattato riguardo a Travel Egadi. Li usiamo solo per rispondere alla tua richiesta.</label>
+              <label for="consenso" style="margin:0;font-weight:400;color:var(--ink)">Acconsento al trattamento dei miei dati per essere ricontattato riguardo a Travel Egadi, come spiegato nell'<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a>.</label>
             </div>
           </div>
 
@@ -519,17 +621,17 @@
       <a href="#aderisci">Aderisci</a>
     </nav>
   </div>
-  <!-- TODO: collegare qui l'informativa privacy e la cookie policy quando saranno pronte -->
-  <p class="legal"><span>Travel Egadi, Smart Egadi Islands 4.0</span><span>Favignana, Levanzo, Marettimo</span></p>
+  <p class="legal"><span>Travel Egadi, Smart Egadi Islands 4.0</span><span>Favignana, Levanzo, Marettimo</span><a href="privacy.html">Privacy e cookie</a></p>
 </footer>
 
+<div class="dock" id="dock" aria-label="Azioni rapide">
+  <a class="btn btn-sea" href="#aderisci" data-mode="Adesione">Aderisci al progetto</a>
+  <a class="btn btn-wa" id="dock-wa" href="#" hidden>WhatsApp</a>
+</div>
+
 <script>
-/* ===== Impostazioni da compilare prima della pubblicazione ===== */
-var CONFIG = {
-  formEndpoint: '',   // indirizzo del servizio che riceve il modulo (per esempio https://formspree.io/f/xxxxxxxx)
-  contactEmail: '',   // email per le richieste dirette, se vuoi mostrarla accanto al modulo
-  whatsapp: ''        // numero WhatsApp con prefisso e senza spazi, per esempio 393331234567
-};
+/* Le impostazioni (modulo, contatti) stanno in config.js */
+var CONFIG = window.TE_CONFIG || { formEndpoint: '', contactEmail: '', whatsapp: '' };
 
 /* ===== Scrollstory =====
    L'avanzamento dello scorrimento (0..1) guida foto di sfondo, colore del cielo, orologio,
@@ -539,7 +641,7 @@ var CONFIG = {
   var sec = document.getElementById('story');
   var bgs = Array.prototype.slice.call(sec.querySelectorAll('.bg img'));
   var chaps = Array.prototype.slice.call(sec.querySelectorAll('.chap'));
-  var scr = Array.prototype.slice.call(sec.querySelectorAll('#screen img'));   // home, esperienze, scheda
+  var scr = Array.prototype.slice.call(sec.querySelectorAll('#screen .app-screen'));   // home, esperienze, scheda
   var ticks = Array.prototype.slice.call(sec.querySelectorAll('#ticks li'));
   var tint = document.getElementById('tint'), clock = document.getElementById('clock'), part = document.getElementById('part');
   var N = bgs.length;
@@ -593,6 +695,26 @@ var CONFIG = {
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   update();
+})();
+
+/* ===== Barra di azioni su mobile: compare dopo lo scrollstory e sparisce sul modulo ===== */
+(function () {
+  var dock = document.getElementById('dock'), story = document.getElementById('story'), join = document.getElementById('aderisci');
+  if (!dock || !story || !join) return;
+  var wa = document.getElementById('dock-wa');
+  if (CONFIG.whatsapp) { wa.href = 'https://wa.me/' + CONFIG.whatsapp.replace(/\D/g, ''); wa.hidden = false; }
+  var ticking = false;
+  function upd() {
+    ticking = false;
+    var vh = window.innerHeight;
+    var pastStory = story.getBoundingClientRect().bottom < vh * 0.5;
+    var onForm = join.getBoundingClientRect().top < vh * 0.7 && join.getBoundingClientRect().bottom > 0;
+    dock.classList.toggle('show', pastStory && !onForm);
+  }
+  function on() { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }
+  window.addEventListener('scroll', on, { passive: true });
+  window.addEventListener('resize', on);
+  upd();
 })();
 
 /* ===== Modulo ===== */

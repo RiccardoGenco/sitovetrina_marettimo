@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://riccardogenco.github.io/sitovetrina_marettimo/sitemap.xml
