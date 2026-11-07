@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Travel Egadi | Porta la tua attività nell'app delle Egadi</title>
-<meta name="description" content="Travel Egadi riunisce in un'app strutture, esperienze e ristoranti di Favignana, Levanzo e Marettimo. Aderisci al progetto e fatti trovare dai viaggiatori.">
+<meta name="description" content="Zero commissioni per chi ospita e organizza esperienze alle Egadi. Travel Egadi è l'unica app dedicata al territorio che valorizza il tuo lavoro: quota di lancio di 79,99 € all'anno.">
 <meta name="theme-color" content="#1070B8">
 <meta property="og:title" content="Travel Egadi | Porta la tua attività nell'app delle Egadi">
-<meta property="og:description" content="Strutture, esperienze e ristoranti di Favignana, Levanzo e Marettimo in un'unica app. Entra tra i primi partner.">
+<meta property="og:description" content="Zero commissioni, contatto diretto con i turisti e visibilità totale: quota di lancio di 79,99 € all'anno per chi sale a bordo adesso.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
 <link rel="icon" href="assets/logo-icona.png">
@@ -71,8 +71,8 @@
   /* ===== Hero ===== */
   .hero { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: center; gap: 24px; padding: 24px var(--gutter) 0; min-height: min(820px, calc(100svh - 80px)); }
   .hero-text { position: relative; z-index: 3; padding-bottom: 150px; }
-  h1 { margin: 0 0 22px; font-weight: 800; color: var(--slate); font-size: clamp(44px, 6.6vw, 96px); line-height: .98; letter-spacing: -0.035em; max-width: 12ch; text-wrap: balance; }
-  .lead { max-width: 34ch; font-size: clamp(20px, 2.1vw, 25px); line-height: 1.4; margin: 0 0 32px; }
+  h1 { margin: 0 0 22px; font-weight: 800; color: var(--slate); font-size: clamp(36px, 4.7vw, 70px); line-height: 1; letter-spacing: -0.03em; max-width: 16ch; text-wrap: balance; }
+  .lead { max-width: 38ch; font-size: clamp(20px, 2.1vw, 25px); line-height: 1.4; margin: 0 0 32px; }
   .actions { display: flex; flex-wrap: wrap; gap: 14px; }
   .soon { margin: 18px 0 0; font-size: 16px; color: var(--slate); }
   .scene { position: relative; align-self: stretch; min-height: 520px; }
@@ -141,7 +141,7 @@
   .why { background: var(--white); margin-top: -56px; border-radius: 56px 56px 0 0; padding: 88px var(--gutter) 24px; position: relative; z-index: 5; }
   h2.big { margin: 0; font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; font-size: clamp(34px, 5vw, 64px); color: var(--slate); text-wrap: balance; }
   .why h2.big { max-width: 18ch; }
-  .why .sub { margin: 18px 0 0; max-width: 46ch; font-size: clamp(19px, 2vw, 22px); }
+  .why .sub, .how .sub { margin: 18px 0 0; max-width: 52ch; font-size: clamp(19px, 2vw, 22px); }
   .cards { margin: 48px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
   .cards li { background: var(--paper); border-radius: 28px; padding: 28px 26px 30px; }
   .ico { width: 56px; height: 56px; border-radius: 50%; background: var(--sky); display: grid; place-items: center; margin-bottom: 18px; }
@@ -154,6 +154,8 @@
 
   /* ===== Come funziona ===== */
   .how { background: var(--white); padding: 72px var(--gutter) 24px; }
+  .steps-title { margin: 56px 0 0; font-size: clamp(24px, 2.6vw, 32px); font-weight: 800; letter-spacing: -0.02em; color: var(--slate); }
+  .steps-title + .steps { margin-top: 24px; }
   .steps { margin: 44px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 40px; counter-reset: s; }
   .steps li { counter-increment: s; border-top: 3px solid var(--sun); padding-top: 20px; }
   .steps li::before { content: counter(s); display: block; font-weight: 800; font-size: clamp(54px, 6vw, 84px); line-height: 1; letter-spacing: -0.04em; color: var(--slate); margin-bottom: 10px; }
@@ -274,8 +276,8 @@
 <main>
   <section class="hero" aria-labelledby="titolo">
     <div class="hero-text">
-      <h1 id="titolo">La tua attività, nell'app delle Egadi.</h1>
-      <p class="lead">Travel Egadi riunisce strutture, esperienze e ristoranti di Favignana, Levanzo e Marettimo. Entra tra i primi partner e fatti trovare dai viaggiatori.</p>
+      <h1 id="titolo">Stanco di regalare percentuali altissime ai colossi del web?</h1>
+      <p class="lead">Basta con le commissioni esagerate delle grandi piattaforme. Arriva Travel Egadi, l'unica app dedicata al territorio che valorizza il tuo lavoro.</p>
       <div class="actions">
         <a class="btn btn-sea" href="#aderisci" data-mode="Adesione">Aderisci al progetto</a>
         <a class="btn btn-ghost" href="#aderisci" data-mode="Informazioni">Chiedi informazioni</a>
@@ -341,7 +343,7 @@
         <article class="chap" style="--img:url(assets/photos/web/via-notte-900.webp)">
           <p class="when">23:00 · Notte</p>
           <h2>Domani si ricomincia.</h2>
-          <p>Ogni giornata come questa passa da una scheda curata. Entra tra i primi partner: l'inserimento è gratuito fino a dicembre 2026.</p>
+          <p>Ogni giornata come questa passa da una scheda curata. Zero commissioni, solo una quota di lancio di 79,99 € all'anno.</p>
           <a class="btn btn-sun" href="#aderisci" data-mode="Adesione">Aderisci al progetto</a>
         </article>
       </div>
@@ -361,27 +363,27 @@
   <!-- Perché aderire -->
   <section class="why" id="perche" aria-labelledby="perche-t">
     <h2 class="big" id="perche-t">Perché aderire a Travel Egadi</h2>
-    <p class="sub">Un'unica vetrina per tutte le isole, pensata per chi ospita e per chi organizza esperienze.</p>
+    <p class="sub">Pubblicizziamo alloggi, ristorazione ed esperienze per connetterti direttamente ai turisti, senza intermediari. Più visibilità, contatti immediati e statistiche in tempo reale per valorizzare il tuo lavoro.</p>
     <ul class="cards">
+      <li>
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.2"/><circle cx="17" cy="17" r="2.2"/></svg></div>
+        <h3>Zero commissioni</h3>
+        <p>Basta con le commissioni esagerate delle grandi piattaforme. Paghi solo una quota di lancio di 79,99 € all'anno.</p>
+      </li>
       <li>
         <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3>Più visibilità</h3>
-        <p>Una scheda dedicata con foto e descrizione, presente nelle ricerche per categoria e per località.</p>
+        <p>Una scheda dedicata con foto e descrizione, presente nelle ricerche per categoria e per località, sulla mappa digitale e negli itinerari consigliati dai local.</p>
       </li>
       <li>
         <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></div>
-        <h3>Contatti diretti</h3>
-        <p>Gli ospiti ti chiamano o ti scrivono senza intermediari, quando hanno scelto la tua attività.</p>
-      </li>
-      <li>
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3Z"/></svg></div>
-        <h3>Recensioni vere</h3>
-        <p>Le opinioni di chi è stato da te, per farti conoscere e migliorare stagione dopo stagione.</p>
+        <h3>Contatti immediati</h3>
+        <p>I turisti ti contattano o prenotano direttamente, in un clic e senza intermediari.</p>
       </li>
       <li>
         <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
-        <h3>Statistiche</h3>
-        <p>Vedrai quante persone guardano la tua scheda e quanti ti contattano.</p>
+        <h3>Statistiche in tempo reale</h3>
+        <p>Vedi quante persone guardano la tua scheda e quanti ti contattano.</p>
       </li>
     </ul>
     <p class="who"><b>Per chi è:</b> <span>Bed and breakfast</span> <span>Case vacanze</span> <span>Hotel e resort</span> <span>Escursioni e tour</span> <span>Noleggi</span> <span>Ristoranti</span></p>
@@ -389,7 +391,9 @@
 
   <!-- Come funziona -->
   <section class="how" aria-labelledby="come-t">
-    <h2 class="big" id="come-t">Come si entra, in tre passi</h2>
+    <h2 class="big" id="come-t">Come funziona</h2>
+    <p class="sub">Gli utenti scaricano l'app, trovano la tua attività tramite la mappa digitale o gli itinerari consigliati dai local, e ti contattano o prenotano direttamente in un clic.</p>
+    <h3 class="steps-title">Come si entra, in tre passi</h3>
     <ol class="steps">
       <li>
         <h3>Compili il modulo</h3>
@@ -426,7 +430,7 @@
       <div class="txt">
         <h2 id="aderisci-t">Aderisci al progetto</h2>
         <p>Compila il modulo: ti ricontattiamo per preparare insieme la scheda della tua attività. Se vuoi prima capire meglio, scegli «Voglio informazioni».</p>
-        <p class="offer">Inserimento gratuito fino a dicembre 2026. Dal 2027 deciderai tu se continuare.</p>
+        <p class="offer">Zero commissioni, solo una quota di lancio di 79,99 € all'anno per avere visibilità totale. Un'offerta speciale riservata solo a chi sale a bordo adesso.</p>
         <p class="who-behind">Il team di Travel Egadi è guidato da Concetta Spataro, esperta del settore turistico con anni di esperienza nell'accoglienza e nell'organizzazione di tour.</p>
         <div class="direct" id="direct" aria-label="Contatti diretti"></div>
       </div>
