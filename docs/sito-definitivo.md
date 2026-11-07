@@ -36,8 +36,9 @@ Le impostazioni stanno in `CONFIG`, all'inizio dello script in fondo a `index.ht
 
 ## Punti aperti
 
-- **Offerta di lancio**: il sito dice "gratuito fino a dicembre 2026, dal 2027 decidi tu se continuare" (dalla presentazione). Il modulo cartaceo parla di una quota di 79,99 € l'anno. Con dicembre 2026 ormai vicino, il testo va confermato o aggiornato.
-- **Concetta Spataro**: la frase sul coordinamento del progetto è ricavata dalle slide, da far confermare.
+- **Offerta di lancio**: il sito dice "gratuito fino a dicembre 2026, dal 2027 deciderai tu se continuare", come nella presentazione. Il modulo di adesione cartaceo indica la quota annuale di 79,99 € IVA inclusa (12 mesi dall'attivazione). I due testi sono coerenti, ma il sito oggi non nomina la quota: da decidere con il cliente se scriverla (più trasparente per chi ospita) o lasciarla al contatto diretto.
+- **Titolare del trattamento**: nel modulo cartaceo l'intestatario dei pagamenti è Myland Srl. Per l'informativa privacy serve sapere chi è il titolare dei dati raccolti dal modulo del sito. Le coordinate bancarie del modulo non vanno mai messe nel sito.
+- **Concetta Spataro**: la frase nel sito riprende la presentazione ("il team è guidato da Concetta Spataro, esperta del settore turistico"). La presentazione parla anche di un coordinatore residente a Marettimo, senza dire che sia la stessa persona, quindi non l'ho scritto.
 - **Foto**: i diritti d'uso vanno verificati. In due foto compaiono marchi visibili (ombrellone di una birra in `via-notte`, nome di una barca in `porto-giorno`).
 - **Schermate del mock**: nella home compare un nome utente d'esempio. Meglio sostituirlo quando ci sono gli screenshot ufficiali.
 - **Logo**: serve il file SVG originale al posto del ritaglio in `assets/logo-icona.png`.
