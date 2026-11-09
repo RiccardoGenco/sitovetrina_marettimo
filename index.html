@@ -230,6 +230,10 @@
   .join { background: var(--sun); border-radius: 44px; padding: clamp(28px, 6vw, 80px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 36px clamp(28px, 5vw, 72px); align-items: start; }
   .join h2 { margin: 0 0 18px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-size: clamp(36px, 4.6vw, 62px); color: var(--ink); max-width: 11ch; text-wrap: balance; }
   .join .txt p { margin: 0 0 16px; max-width: 36ch; }
+  .fee { margin: 0 0 12px; }
+  .incl { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 8px; }
+  .incl li { position: relative; padding-left: 30px; }
+  .incl li::before { content: ""; position: absolute; left: 0; top: .32em; width: 18px; height: 18px; border-radius: 50%; background: var(--sea) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center / 12px no-repeat; }
   .offer { margin: 24px 0 !important; padding: 16px 20px; border-radius: 20px; background: rgba(255,255,255,.55); font-weight: 600; }
   .who-behind { font-size: 17px; padding-top: 16px; border-top: 2px solid rgba(20,40,60,.25); }
   .direct { margin-top: 20px; display: none; gap: 10px; flex-wrap: wrap; }
@@ -393,7 +397,7 @@
         <article class="chap" style="--img:url(assets/photos/web/marettimo-dall-alto-900.webp)">
           <p class="when">08:00 · Mattina</p>
           <h2>Sveglia sul porto.</h2>
-          <p>L'ospite cerca dove dormire tra hotel, bed and breakfast, case e resort. Trova la tua struttura, guarda le foto e ti scrive direttamente.</p>
+          <p>L'ospite cerca dove dormire tra hotel, bed and breakfast e case vacanze. Trova la tua struttura, guarda le foto e ti scrive direttamente.</p>
         </article>
         <article class="chap" style="--img:url(assets/photos/web/grotta-azzurra-900.webp)">
           <p class="when">11:30 · Tarda mattina</p>
@@ -488,7 +492,7 @@
         <p>Vedi quante persone guardano la tua scheda e quanti ti contattano.</p>
       </li>
     </ul>
-    <p class="who"><b>Per chi è:</b> <span>Bed and breakfast</span> <span>Case vacanze</span> <span>Hotel e resort</span> <span>Escursioni e tour</span> <span>Noleggi</span> <span>Ristoranti</span></p>
+    <p class="who"><b>Per chi è:</b> <span>Bed and breakfast</span> <span>Case vacanze</span> <span>Hotel</span> <span>Escursioni e tour</span> <span>Noleggi</span> <span>Ristoranti</span> <span>Servizi turistici</span></p>
   </section>
 
   <!-- Come funziona -->
@@ -533,6 +537,14 @@
         <h2 id="aderisci-t">Aderisci al progetto</h2>
         <p>Compila il modulo: ti ricontattiamo per preparare insieme la scheda della tua attività. Se vuoi prima capire meglio, scegli «Voglio informazioni».</p>
         <p class="offer">Zero commissioni, solo una quota di lancio di 79,99 € all'anno, meno di 22 centesimi al giorno, per avere visibilità totale. Un'offerta speciale riservata solo a chi sale a bordo adesso.</p>
+        <p class="fee"><b>Quota annuale: 79,99 € IVA inclusa.</b> Durata dell'adesione: 12 mesi dalla data di attivazione.</p>
+        <ul class="incl" aria-label="Cosa comprende l'adesione">
+          <li>Scheda dedicata all'interno dell'app</li>
+          <li>Pubblicazione di foto e descrizione</li>
+          <li>Contatti diretti con gli utenti</li>
+          <li>Presenza nelle ricerche per categoria e località</li>
+          <li>Statistiche di visualizzazione e di contatto</li>
+        </ul>
         <p class="who-behind">Il team di Travel Egadi è guidato da Concetta Spataro, esperta del settore turistico con anni di esperienza nell'accoglienza e nell'organizzazione di tour.</p>
         <div class="direct" id="direct" aria-label="Contatti diretti"></div>
       </div>
@@ -554,13 +566,13 @@
               <label for="tipologia">Tipologia <span class="req" aria-hidden="true">*</span></label>
               <select id="tipologia" name="tipologia" required>
                 <option value="" selected disabled>Scegli</option>
+                <option>Hotel</option>
                 <option>Bed and breakfast</option>
                 <option>Casa vacanze</option>
-                <option>Hotel</option>
-                <option>Resort</option>
+                <option>Ristorante</option>
                 <option>Escursioni e tour</option>
-                <option>Noleggio barche, bici o altro</option>
-                <option>Ristorante o locale</option>
+                <option>Noleggio</option>
+                <option>Servizi turistici</option>
                 <option>Altro</option>
               </select>
             </div>
