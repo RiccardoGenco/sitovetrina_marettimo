@@ -10,7 +10,7 @@ window.TE_CONFIG = {
   whatsapp: '',          // numero WhatsApp con prefisso e senza spazi né +, per esempio 393331234567
 
   /* INFORMATIVA PRIVACY (privacy.html) */
-  titolare: '',          // nome e cognome o ragione sociale del titolare del trattamento
+  titolare: 'Myland Travels', // nome e cognome o ragione sociale del titolare del trattamento
   sedeTitolare: '',      // indirizzo, partita IVA o codice fiscale del titolare
   emailPrivacy: '',      // email a cui scrivere per esercitare i diritti sui dati
   fornitoreModulo: 'Google (Apps Script e Fogli Google)', // servizio che riceve il modulo, per esempio Formspree
