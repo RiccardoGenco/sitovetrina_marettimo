@@ -82,6 +82,7 @@
   .actions { display: flex; flex-wrap: wrap; gap: 14px; }
   .soon { margin: 18px 0 0; font-size: 16px; color: var(--slate); }
   .soon a { font-weight: 600; color: var(--ink); }
+  .captcha:not(:empty) { margin: 18px 0 0; }
   .scene { position: relative; align-self: stretch; min-height: 520px; }
   .sun { position: absolute; right: -4%; top: 6%; width: min(600px, 96%); aspect-ratio: 1; border-radius: 50%; background: var(--sun); }
   .phone { position: absolute; left: 50%; bottom: 0; transform: translateX(-46%); width: clamp(220px, 26vw, 330px); z-index: 2; }
@@ -609,6 +610,7 @@
             </div>
           </div>
 
+          <div class="captcha" id="captcha"></div>
           <div class="send">
             <button class="btn btn-sea" type="submit" id="send">Invia la richiesta</button>
           </div>
@@ -756,6 +758,18 @@ var CONFIG = window.TE_CONFIG || { formEndpoint: '', contactEmail: '', whatsapp:
   if (CONFIG.contactEmail) addLink('Scrivici una email', 'mailto:' + CONFIG.contactEmail, 'btn-ink');
   if (CONFIG.whatsapp) addLink('Scrivici su WhatsApp', 'https://wa.me/' + CONFIG.whatsapp.replace(/\D/g, ''), 'btn-ink');
 
+  // Verifica anti-spam Cloudflare Turnstile: si attiva solo se in config.js c'è la chiave del sito
+  var captcha = null;
+  if (CONFIG.turnstileSiteKey) {
+    window.onTurnstileLoad = function () {
+      captcha = window.turnstile.render('#captcha', { sitekey: CONFIG.turnstileSiteKey, language: 'it' });
+    };
+    var ts = document.createElement('script');
+    ts.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad';
+    ts.async = true; ts.defer = true;
+    document.head.appendChild(ts);
+  }
+
   function say(msg, kind) { statusEl.textContent = msg; statusEl.className = 'status' + (kind ? ' ' + kind : ''); }
 
   form.addEventListener('submit', function (e) {
@@ -775,6 +789,10 @@ var CONFIG = window.TE_CONFIG || { formEndpoint: '', contactEmail: '', whatsapp:
       say('Il modulo non è ancora attivo: in questa versione di prova non viene inviato nulla.', 'err');
       return;
     }
+    if (CONFIG.turnstileSiteKey && !data['cf-turnstile-response']) {
+      say('Attendi la verifica anti-spam qui sopra e riprova.', 'err');
+      return;
+    }
     btn.disabled = true; say('Invio in corso…');
     // Google Apps Script non risponde alla richiesta preliminare CORS: gli si manda il JSON come testo semplice
     var appsScript = /^https:\/\/script\.google\.com\//.test(CONFIG.formEndpoint);
@@ -783,7 +801,7 @@ var CONFIG = window.TE_CONFIG || { formEndpoint: '', contactEmail: '', whatsapp:
       .then(function (res) { if (!res.ok) throw new Error(res.status); return appsScript ? res.json() : { ok: true }; })
       .then(function (r) { if (!r.ok) throw new Error(r.errore); })
       .then(function () { card.classList.add('sent'); thanks.focus(); })
-      .catch(function () { btn.disabled = false; say('Invio non riuscito. Riprova tra poco' + (CONFIG.contactEmail || CONFIG.whatsapp ? ' o scrivici direttamente.' : '.'), 'err'); });
+      .catch(function () { btn.disabled = false; if (captcha !== null) window.turnstile.reset(captcha); say('Invio non riuscito. Riprova tra poco' + (CONFIG.contactEmail || CONFIG.whatsapp ? ' o scrivici direttamente.' : '.'), 'err'); });
   });
 })();
 </script>

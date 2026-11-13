@@ -28,6 +28,12 @@ function doPost(e) {
     var d = JSON.parse((e && e.postData && e.postData.contents) || '{}');
     if (d.sito) return risposta({ ok: true });   // campo trappola riempito da un robot: si finge l'invio
 
+    // Verifica anti-spam Cloudflare Turnstile: attiva solo se la Secret Key è nelle proprietà dello script
+    var segreto = PropertiesService.getScriptProperties().getProperty('TURNSTILE_SECRET');
+    if (segreto && !verificaTurnstile(segreto, d['cf-turnstile-response'])) {
+      return risposta({ ok: false, errore: 'Verifica anti-spam non superata' });
+    }
+
     var r = {};
     COLONNE.forEach(function (c) { r[c[0]] = testo(d[c[0]]); });
     r.consenso = d.consenso ? 'Sì' : '';
@@ -99,6 +105,21 @@ function foglio() {
     sh.getRange(2, 1, sh.getMaxRows() - 1, 1).setNumberFormat('dd/mm/yyyy hh:mm');
   }
   return sh;
+}
+
+// Chiede a Cloudflare se il token del modulo è valido (ogni token vale una sola volta).
+function verificaTurnstile(segreto, token) {
+  if (!token) return false;
+  var res = UrlFetchApp.fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'post',
+    payload: { secret: segreto, response: String(token) },
+    muteHttpExceptions: true
+  });
+  try {
+    return JSON.parse(res.getContentText()).success === true;
+  } catch (err) {
+    return false;
+  }
 }
 
 // Testo semplice e di lunghezza ragionevole.

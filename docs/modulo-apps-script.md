@@ -38,3 +38,16 @@ Dopo aver cambiato il codice nell'editor: **Esegui il deployment → Gestisci de
 
 - Un account Gmail gratuito può inviare circa 100 email al giorno con Apps Script.
 - Le colonne "Stato" e "Note" del foglio sono per voi: servono a segnare chi è stato contattato, chi ha aderito, ecc.
+
+## Anti-spam con Cloudflare Turnstile
+
+1. Su Cloudflare: **Turnstile → Add widget**, modalità "Managed", con gli hostname su cui gira il sito
+   (l'indirizzo `.pages.dev` e il dominio definitivo).
+2. La **Site Key** (pubblica) va in `config.js` alla voce `turnstileSiteKey`.
+3. La **Secret Key** non va mai nel repository: nell'editor di Apps Script, **Impostazioni progetto →
+   Proprietà script → Aggiungi proprietà**, nome `TURNSTILE_SECRET`, valore la Secret Key.
+4. Pubblica una nuova versione dello script (vedi sopra). La prima volta Google chiede di autorizzare
+   le "richieste a servizi esterni": servono per chiedere a Cloudflare se la verifica è valida.
+
+Finché `TURNSTILE_SECRET` non è impostata lo script non controlla nulla, e finché `turnstileSiteKey`
+è vuota il sito non mostra il riquadro: le due parti vanno attivate insieme.
