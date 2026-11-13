@@ -3,7 +3,7 @@
    i pulsanti di contatto non compaiono) e nella pagina privacy compare il segnaposto evidenziato. */
 window.TE_CONFIG = {
   /* MODULO */
-  formEndpoint: '',      // indirizzo dell'app web Apps Script che riceve il modulo (https://script.google.com/macros/s/.../exec), vedi docs/modulo-apps-script.md
+  formEndpoint: 'https://script.google.com/macros/s/AKfycbytDqiV-WN8u5iYCiHFGkLoXEC0teDfk0MOsKjuUuAVM-7syxASmiyw7BUFD7f8ANNTIg/exec', // indirizzo dell'app web Apps Script che riceve il modulo (https://script.google.com/macros/s/.../exec), vedi docs/modulo-apps-script.md
 
   /* CONTATTI DIRETTI (facoltativi) */
   contactEmail: 'travelegadi@gmail.com', // email per le richieste dirette, per esempio info@dominio.it

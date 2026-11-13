@@ -4,6 +4,8 @@
 
 var EMAIL_NOTIFICHE = 'travelegadi@gmail.com';
 var NOME_FOGLIO = 'Richieste';
+// ID del Foglio Google "Travel Egadi - Richieste" (la parte dell'indirizzo tra /d/ e /edit)
+var ID_FOGLIO = '1XjUEmCsEHatPhjXRC1DKn0QAOgVmbWhJyDsD5XZwbYI';
 
 // campo del modulo -> intestazione della colonna
 var COLONNE = [
@@ -77,14 +79,14 @@ function notifica(r) {
     subject: 'Travel Egadi: ' + r.richiesta + ' - ' + r.attivita,
     body: 'Nuova richiesta dal sito Travel Egadi.\n\n' + testo +
       '\n\nRispondi a questa email per scrivere direttamente a ' + r.referente + '.\n' +
-      'Tutte le richieste sono nel foglio: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl()
+      'Tutte le richieste sono nel foglio: ' + SpreadsheetApp.openById(ID_FOGLIO).getUrl()
   };
   if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(r.email)) opzioni.replyTo = r.email;
   MailApp.sendEmail(opzioni);
 }
 
 function foglio() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var ss = SpreadsheetApp.openById(ID_FOGLIO);
   var sh = ss.getSheetByName(NOME_FOGLIO);
   if (!sh) {
     sh = ss.insertSheet(NOME_FOGLIO);
