@@ -10,7 +10,7 @@ window.TE_CONFIG = {
   whatsapp: '',
 
   /* ANTI-SPAM (facoltativo) */
-  turnstileSiteKey: '',  // chiave del sito di Cloudflare Turnstile (Site Key, è pubblica); la Secret Key va solo nelle proprietà dello script Google          // numero WhatsApp con prefisso e senza spazi né +, per esempio 393331234567
+  turnstileSiteKey: '0x4AAAAAAF_hi7lxjJwn2Lgn', // chiave del sito di Cloudflare Turnstile (Site Key, è pubblica); la Secret Key va solo nelle proprietà dello script Google          // numero WhatsApp con prefisso e senza spazi né +, per esempio 393331234567
 
   /* INFORMATIVA PRIVACY (privacy.html) */
   titolare: 'Myland Travels', // nome e cognome o ragione sociale del titolare del trattamento
