@@ -775,8 +775,12 @@ var CONFIG = window.TE_CONFIG || { formEndpoint: '', contactEmail: '', whatsapp:
       return;
     }
     btn.disabled = true; say('Invio in corso…');
-    fetch(CONFIG.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
-      .then(function (res) { if (!res.ok) throw new Error(res.status); })
+    // Google Apps Script non risponde alla richiesta preliminare CORS: gli si manda il JSON come testo semplice
+    var appsScript = /^https:\/\/script\.google\.com\//.test(CONFIG.formEndpoint);
+    var headers = appsScript ? { 'Content-Type': 'text/plain;charset=utf-8' } : { 'Content-Type': 'application/json', 'Accept': 'application/json' };
+    fetch(CONFIG.formEndpoint, { method: 'POST', headers: headers, body: JSON.stringify(data) })
+      .then(function (res) { if (!res.ok) throw new Error(res.status); return appsScript ? res.json() : { ok: true }; })
+      .then(function (r) { if (!r.ok) throw new Error(r.errore); })
       .then(function () { card.classList.add('sent'); thanks.focus(); })
       .catch(function () { btn.disabled = false; say('Invio non riuscito. Riprova tra poco' + (CONFIG.contactEmail || CONFIG.whatsapp ? ' o scrivici direttamente.' : '.'), 'err'); });
   });

@@ -3,16 +3,16 @@
    i pulsanti di contatto non compaiono) e nella pagina privacy compare il segnaposto evidenziato. */
 window.TE_CONFIG = {
   /* MODULO */
-  formEndpoint: '',      // indirizzo del servizio che riceve il modulo, per esempio https://formspree.io/f/xxxxxxxx
+  formEndpoint: '',      // indirizzo dell'app web Apps Script che riceve il modulo (https://script.google.com/macros/s/.../exec), vedi docs/modulo-apps-script.md
 
   /* CONTATTI DIRETTI (facoltativi) */
-  contactEmail: '',      // email per le richieste dirette, per esempio info@dominio.it
+  contactEmail: 'travelegadi@gmail.com', // email per le richieste dirette, per esempio info@dominio.it
   whatsapp: '',          // numero WhatsApp con prefisso e senza spazi né +, per esempio 393331234567
 
   /* INFORMATIVA PRIVACY (privacy.html) */
   titolare: '',          // nome e cognome o ragione sociale del titolare del trattamento
   sedeTitolare: '',      // indirizzo, partita IVA o codice fiscale del titolare
   emailPrivacy: '',      // email a cui scrivere per esercitare i diritti sui dati
-  fornitoreModulo: '',   // servizio che riceve il modulo, per esempio Formspree
+  fornitoreModulo: 'Google (Apps Script e Fogli Google)', // servizio che riceve il modulo, per esempio Formspree
   dataAggiornamento: ''  // data dell'ultimo aggiornamento, per esempio 7 novembre 2026
 };
